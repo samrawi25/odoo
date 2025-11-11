@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequence for Telemarketing Confirmations -->
+        <record id="seq_telemarketing_confirmation" model="ir.sequence">
+            <field name="name">Telemarketing Confirmation</field>
+            <field name="code">telemarketing.confirmation</field>
+            <field name="prefix">CONF/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Default KPI Definitions -->
+        <record id="kpi_def_leads_registered" model="kpi.definition">
+            <field name="name">Leads Registered</field>
+            <field name="description">Counts the number of new leads registered by a user.</field>
+            <field name="kpi_type">leads_registered</field>
+        </record>
+        <record id="kpi_def_data_quality" model="kpi.definition">
+            <field name="name">Overall Data Quality</field>
+            <field name="description">Average data quality percentage from telemarketing confirmations.</field>
+            <field name="kpi_type">data_quality</field>
+            <field name="confirmation_fields">name_confirmed</field> <!-- Default, can be changed -->
+        </record>
+
+        <!-- Cron Job to Update KPIs Daily -->
+        <record id="ir_cron_update_kpi_targets" model="ir.cron">
+            <field name="name">KPI: Auto-update Target Actuals</field>
+            <field name="model_id" ref="model_kpi_target"/>
+            <field name="state">code</field>
+            <field name="code">model._cron_update_actual_values()</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

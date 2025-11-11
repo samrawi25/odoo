@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Competitor Industry Views -->
+    <record model="ir.ui.view" id="competitor_industry_view_tree">
+        <field name="name">Industry Types</field>
+        <field name="model">competitor.industry</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    <record id="competitor_industries_action" model="ir.actions.act_window">
+        <field name="name">Industries</field>
+        <field name="res_model">competitor.industry</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Competitor Views -->
+    <record model="ir.ui.view" id="competitor_view_tree">
+        <field name="name">Competitor list</field>
+        <field name="model">competitor.competitor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="website"/>
+                <field name="country_id"/>
+                <field name="industry_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    <record id="competitor_view_form" model="ir.ui.view">
+        <field name="name">competitor.competitor.form</field>
+        <field name="model">competitor.competitor</field>
+        <field name="arch" type="xml">
+            <form string="Competitor">
+                <sheet>
+                    <!-- ... Form content from competitor/views.xml ... -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="competitor_action" model="ir.actions.act_window">
+        <field name="name">Competitors</field>
+        <field name="res_model">competitor.competitor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Market Intelligence Views -->
+    <record id="view_market_intelligence_form" model="ir.ui.view">
+        <field name="name">market.intelligence.form</field>
+        <field name="model">market_intelligence.market_intelligence</field>
+        <field name="arch" type="xml">
+            <form string="Market Intelligence">
+                <sheet>
+                    <!-- ... Form content from market_intelligence/views.xml ... -->
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="market_intelligence_action" model="ir.actions.act_window">
+      <field name="name">Market intelligence</field>
+      <field name="res_model">market_intelligence.market_intelligence</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

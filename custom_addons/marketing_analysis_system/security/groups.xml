@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- From crm_lead_geolocation -->
+        <record id="group_company_manager" model="res.groups">
+            <field name="name">Company Manager</field>
+            <field name="category_id" ref="base.module_category_sales_crm"/>
+        </record>
+
+        <!-- From crm_phonecall -->
+        <record id="group_scheduled_calls" model="res.groups">
+            <field name="name">User: see all scheduled calls</field>
+            <field name="category_id" ref="base.module_category_sales_crm"/>
+        </record>
+
+        <!-- From kpi_management_framework -->
+        <record id="group_telemarketer" model="res.groups">
+            <field name="name">Telemarketer</field>
+            <field name="category_id" ref="base.module_category_sales_crm"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_telemarketer_full" model="res.groups">
+            <field name="name">Telemarketer - Full Access</field>
+            <field name="category_id" ref="base.module_category_sales_crm"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user')), (4, ref('sales_team.group_sale_salesman'))]"/>
+        </record>
+    </data>
+</odoo>

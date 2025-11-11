@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Hide fields from FORM view - Keep fields but make them invisible -->
+    <record id="view_crm_lead_form_hide_fields" model="ir.ui.view">
+        <field name="name">crm.lead.form.hide.fields</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Hide probability section but keep the field for modifiers -->
+            <xpath expr="//div[@class='col-auto'][.//label[@for='probability']]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Hide probability field but keep it in DOM for modifiers -->
+            <field name="probability" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <!-- Hide priority from form view -->
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <!-- Hide tags from form view -->
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Hide fields from LEADS TREE view -->
+    <record id="view_crm_lead_tree_hide_fields" model="ir.ui.view">
+        <field name="name">crm.lead.tree.hide.fields</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <field name="probability" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </field>
+            <field name="priority" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Hide fields from OPPORTUNITIES TREE view -->
+    <record id="view_crm_oppor_tree_hide_fields" model="ir.ui.view">
+        <field name="name">crm.oppor.tree.hide.fields</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+            <field name="probability" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </field>
+            <field name="priority" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="column_invisible">True</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Hide fields from KANBAN view -->
+    <record id="view_crm_lead_kanban_hide_fields" model="ir.ui.view">
+        <field name="name">crm.lead.kanban.hide.fields</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_lead_kanban"/>
+        <field name="arch" type="xml">
+            <!-- Hide priority from kanban -->
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+
+            <!-- Hide tags from kanban -->
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Hide fields from OPPORTUNITIES KANBAN view -->
+    <record id="view_crm_oppor_kanban_hide_fields" model="ir.ui.view">
+        <field name="name">crm.oppor.kanban.hide.fields</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="probability" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

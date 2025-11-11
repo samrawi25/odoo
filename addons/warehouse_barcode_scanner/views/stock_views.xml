@@ -1,0 +1,18 @@
+<odoo>
+    <record id="action_warehouse_barcode_scanner" model="ir.actions.client">
+        <field name="name">Barcode Scanner</field>
+        <field name="tag">warehouse_barcode_scanner.ui</field>
+        <field name="target">fullscreen</field>
+    </record>
+
+    <record id="stock_picking_form_view_inherit_barcode" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.barcode</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="%(action_warehouse_barcode_scanner)d" string="Scan Barcodes" type="action" class="oe_highlight"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

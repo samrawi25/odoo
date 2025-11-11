@@ -1,0 +1,50 @@
+<!-- document_page/views/document_page_category_views.xml -->
+<odoo>
+    <!-- Tree View for Document Page Category -->
+    <record id="view_document_page_category_tree" model="ir.ui.view">
+        <field name="name">document.page.category.tree</field>
+        <field name="model">document.page.category</field>
+        <field name="arch" type="xml">
+            <tree string="Document Page Categories">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Document Page Category -->
+    <record id="view_document_page_category_form" model="ir.ui.view">
+        <field name="name">document.page.category.form</field>
+        <field name="model">document.page.category</field>
+        <field name="arch" type="xml">
+            <form string="Document Page Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--
+      Action for Document Page Category
+      MODIFIED: The ID has been changed from 'action_document_page_category' to 'action_category'
+      to satisfy the requirements of the 'mgmtsystem_manual' module.
+    -->
+    <record id="action_category" model="ir.actions.act_window">
+        <field name="name">Document Page Categories</field>
+        <field name="res_model">document.page.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!--
+      Menu Item for Categories under your module's Configuration Menu.
+      This uses the newly renamed action.
+    -->
+    <menuitem
+        id="menu_document_page_category"
+        name="Page Categories"
+        parent="document_page.menu_documentation_configuration"
+        action="action_category"
+        sequence="10"/>
+</odoo>

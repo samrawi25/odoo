@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- KPI Definition Views -->
+    <record id="kpi_definition_view_form" model="ir.ui.view">
+        <field name="name">kpi.definition.form</field>
+        <field name="model">kpi.definition</field>
+        <field name="arch" type="xml">
+            <!-- ... Form content from kpi_management_framework/views/kpi_definition_views.xml ... -->
+        </field>
+    </record>
+    <record id="kpi_definition_action" model="ir.actions.act_window">
+        <field name="name">KPI Definitions</field>
+        <field name="res_model">kpi.definition</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- KPI Target Views -->
+    <record id="kpi_target_view_form" model="ir.ui.view">
+        <field name="name">kpi.target.form</field>
+        <field name="model">kpi.target</field>
+        <field name="arch" type="xml">
+            <!-- ... Form content from kpi_management_framework/views/kpi_target_views.xml ... -->
+        </field>
+    </record>
+    <record id="kpi_target_action" model="ir.actions.act_window">
+        <field name="name">KPI Targets</field>
+        <field name="res_model">kpi.target</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- KPI Target Line Views -->
+    <record id="view_kpi_target_line_tree" model="ir.ui.view">
+        <field name="name">kpi.target.line.tree</field>
+        <field name="model">kpi.target.line</field>
+        <field name="arch" type="xml">
+             <!-- ... Tree content from kpi_management_framework/views/kpi_target_line_views.xml ... -->
+        </field>
+    </record>
+    <record id="action_kpi_target_line" model="ir.actions.act_window">
+        <field name="name">KPI Target Lines</field>
+        <field name="res_model">kpi.target.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- KPI History Views -->
+    <record id="view_kpi_history_tree" model="ir.ui.view">
+        <field name="name">kpi.history.tree</field>
+        <field name="model">kpi.history</field>
+        <field name="arch" type="xml">
+            <!-- ... Tree content from kpi_management_framework/views/kpi_history_views.xml ... -->
+        </field>
+    </record>
+    <record id="action_kpi_history" model="ir.actions.act_window">
+        <field name="name">KPI Activity History</field>
+        <field name="res_model">kpi.history</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Telemarketing Confirmation Views -->
+    <record id="view_telemarketing_confirmation_form" model="ir.ui.view">
+        <field name="name">telemarketing.confirmation.form</field>
+        <field name="model">telemarketing.confirmation</field>
+        <field name="arch" type="xml">
+            <!-- ... Form content from kpi_management_framework/views/telemarketing_confirmation_views.xml ... -->
+        </field>
+    </record>
+    <record id="action_telemarketing_confirmation" model="ir.actions.act_window">
+        <field name="name">Telemarketing Confirmations</field>
+        <field name="res_model">telemarketing.confirmation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit CRM Lead view to add dashboard -->
+    <record id="crm_lead_view_form_inherit_dashboard" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.dashboard</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="after">
+                <div class="oe_dashboard">
+                    <!-- Sales Performance Section -->
+                    <div class="dashboard_section oe_chart">
+                        <h2>Sales Performance</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <field name="expected_revenue" widget="monetary" options="{'currency_field': 'company_currency'}" id="expected_revenue_field"/>
+                                <label for="expected_revenue_field" string="Expected Revenue"/>
+                            </div>
+                            <div class="col-md-6">
+                                <field name="probability" widget="percentage" id="probability_field"/>
+                                <label for="probability_field" string="Win Probability"/>
+                            </div>
+                        </div>
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                                <field name="sales_funnel" widget="crm_funnel"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Marketing Intelligence Section -->
+                    <div class="dashboard_section">
+                        <h2>Marketing Intelligence</h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <field name="campaign_id" widget="many2one_clickable" id="campaign_id_field"/>
+                                <label for="campaign_id_field" string="Active Campaign"/>
+                            </div>
+                            <div class="col-md-4">
+                                <field name="lead_count" widget="integer" id="lead_count_field"/>
+                                <label for="lead_count_field" string="Leads Generated"/>
+                            </div>
+                            <div class="col-md-4">
+                                <field name="conversion_rate" widget="percentage" id="conversion_rate_field"/>
+                                <label for="conversion_rate_field" string="Conversion Rate"/>
+                            </div>
+                        </div>
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                                <field name="campaign_performance" widget="campaign_chart"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Competitor Analysis Section -->
+                    <div class="dashboard_section">
+                        <h2>Competitor Analysis</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <field name="competitor_ids" widget="many2many_tags" options="{'color_field': 'color'}" id="competitor_ids_field"/>
+                                <label for="competitor_ids_field" string="Main Competitors"/>
+                            </div>
+                            <div class="col-md-6">
+                                <field name="competitive_position" widget="selection" id="competitive_position_field"/>
+                                <label for="competitive_position_field" string="Competitive Position"/>
+                            </div>
+                        </div>
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                                <field name="market_share_chart" widget="competitor_chart"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Interaction Section -->
+                    <div class="dashboard_section">
+                        <h2>Customer Interaction</h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <field name="call_count" widget="integer" id="call_count_field"/>
+                                <label for="call_count_field" string="Total Calls"/>
+                            </div>
+                            <div class="col-md-4">
+                                <field name="visit_count" widget="integer" id="visit_count_field"/>
+                                <label for="visit_count_field" string="Total Visits"/>
+                            </div>
+                            <div class="col-md-4">
+                                <field name="last_interaction" widget="datetime" id="last_interaction_field"/>
+                                <label for="last_interaction_field" string="Last Interaction"/>
+                            </div>
+                        </div>
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                                <field name="interaction_history" widget="interaction_timeline"/>
+                            </div>
+                        </div>
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                                <field name="customer_sentiment" widget="sentiment_gauge"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KPI Management Section -->
+                    <div class="dashboard_section">
+                        <h2>KPI Management</h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <field name="kpi_sales_target" widget="kpi_gauge" id="kpi_sales_target_field"/>
+                                <label for="kpi_sales_target_field" string="Sales Target"/>
+                            </div>
+                            <div class="col-md-4">
+                                <field name="kpi_conversion_rate" widget="kpi_gauge" id="kpi_conversion_rate_field"/>
+                                <label for="kpi_conversion_rate_field" string="Conversion Rate"/>
+                            </div>
+                            <div class="col-md-4">
+                                <field name="kpi_response_time" widget="kpi_gauge" id="kpi_response_time_field"/>
+                                <label for="kpi_response_time_field" string="Response Time"/>
+                            </div>
+                        </div>
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                                <field name="kpi_trend_chart" widget="kpi_trend"/>
+                            </div>
+                        </div>
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                                <field name="kpi_comparison" widget="kpi_comparison"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,22 @@
+<odoo>
+    <template id="report_stock_barcode">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Barcode Scanner Report</h2>
+                    <p>Barcode: <t t-esc="doc.barcode"/></p>
+                    <p>Picking: <t t-esc="doc.picking_id.name"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="action_stock_barcode_report"
+        model="stock.barcode.scanner"
+        string="Barcode Scanner Report"
+        report_type="qweb-pdf"
+        name="stock_barcode.report_stock_barcode"
+        print_report_name="'Barcode Scanner Report - ' + (object.name or 'unnamed')"
+    />
+</odoo>

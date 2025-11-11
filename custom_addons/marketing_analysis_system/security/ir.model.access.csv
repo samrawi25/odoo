@@ -1,0 +1,48 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+# From crm_phonecall
+access_crm_phonecall_user,crm.phonecall.user,model_crm_phonecall,base.group_user,1,1,1,1
+access_crm_phonecall_report_user,crm.phonecall.report.user,model_crm_phonecall_report,base.group_user,1,0,0,0
+access_crm_phonecall2phonecall_user,crm.phonecall2phonecall.user,model_crm_phonecall2phonecall,base.group_user,1,1,1,1
+
+# From crm_phonecall_summary_predefined
+access_crm_phonecall_summary_salesman,crm.phonecall.summary.salesman,model_crm_phonecall_summary,sales_team.group_sale_salesman,1,0,0,0
+access_crm_phonecall_summary_manager,crm.phonecall.summary.manager,model_crm_phonecall_summary,sales_team.group_sale_manager,1,1,1,1
+
+# From crm_lead_geolocation (group will be in this module)
+access_crm_lead_company_manager,crm.lead.company_manager,crm.model_crm_lead,marketing_analysis_system.group_company_manager,1,1,1,0
+
+# From competitor
+access_competitor_competitor,competitor.competitor.user,model_competitor_competitor,base.group_user,1,1,1,1
+access_competitor_industry,competitor.industry.user,model_competitor_industry,base.group_user,1,1,1,1
+access_competitor_competitor_company_manager,competitor.competitor.company_manager,model_competitor_competitor,marketing_analysis_system.group_company_manager,1,1,1,0
+access_competitor_industry_company_manager,competitor.industry.company_manager,model_competitor_industry,marketing_analysis_system.group_company_manager,1,1,1,0
+
+# From market_intelligence
+access_market_intelligence_market_intelligence,mi.mi,model_market_intelligence_market_intelligence,base.group_user,1,1,1,1
+access_market_intelligence_market_intelligence_line,mi.mi_line,model_market_intelligence_market_intelligence_line,base.group_user,1,1,1,1
+access_market_intelligence_company_manager,mi.company_manager,model_market_intelligence_market_intelligence,marketing_analysis_system.group_company_manager,1,1,1,0
+access_market_intelligence_line_company_manager,mi_line.company_manager,model_market_intelligence_market_intelligence_line,marketing_analysis_system.group_company_manager,1,1,1,0
+
+# From crm_telemarketing
+access_crm_telemarketing_call,crm.telemarketing.call,model_crm_telemarketing_call,base.group_user,1,1,1,1
+access_crm_telemarketing_status,crm.telemarketing.status,model_crm_telemarketing_status,base.group_user,1,1,1,1
+access_report_telemarketing,report.telemarketing,model_report_telemarketing,base.group_user,1,0,0,0
+access_report_telemarketing_dashboard,report.telemarketing.dashboard,model_report_telemarketing_dashboard_dashboard,base.group_user,1,0,0,0
+
+# From encounter_visit
+access_encounter_encounter_visit,encounter.visit,model_encounter_encounter_visit,base.group_user,1,1,1,1
+access_encounter_visit_title,encounter.visit.title,model_encounter_visit_title,base.group_user,1,1,1,1
+access_encounter_encounter_visit_company_manager,encounter.visit.company_manager,model_encounter_encounter_visit,marketing_analysis_system.group_company_manager,1,1,1,0
+
+# From kpi_management_framework
+access_kpi_definition_user,kpi.definition.user,model_kpi_definition,base.group_user,1,1,1,1
+access_kpi_target_user,kpi.target.user,model_kpi_target,base.group_user,1,1,1,1
+access_kpi_history_user,kpi.history.user,model_kpi_history,base.group_user,1,1,1,1
+access_kpi_target_line_user,kpi.target.line.user,model_kpi_target_line,base.group_user,1,1,1,1
+access_telemarketing_confirmation_user,telemarketing.confirmation.user,model_telemarketing_confirmation,base.group_user,1,0,0,0
+access_telemarketing_confirmation_telemarketer,telemarketing.confirmation.telemarketer,model_telemarketing_confirmation,marketing_analysis_system.group_telemarketer,1,1,1,1
+access_telemarketing_confirmation_manager,telemarketing.confirmation.manager,sales_team.group_sale_manager,1,1,1,1
+
+# From product_price_log
+access_product_price_log,product.price.log,model_product_price_log,base.group_user,1,1,1,1
+access_price_comparison_report,price.comparison.report,model_price_comparison_report,base.group_user,1,0,0,0

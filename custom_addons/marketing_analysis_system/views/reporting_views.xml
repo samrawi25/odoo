@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Telemarketing Report Views -->
+    <record id="view_report_telemarketing_pivot" model="ir.ui.view">
+        <field name="name">report.telemarketing.pivot</field>
+        <field name="model">report.telemarketing</field>
+        <field name="arch" type="xml">
+            <!-- ... Pivot content from crm_telemarketing/views/telemarketing_report_views.xml ... -->
+        </field>
+    </record>
+    <record id="action_report_telemarketing" model="ir.actions.act_window">
+        <field name="name">Telemarketing Analysis</field>
+        <field name="res_model">report.telemarketing</field>
+        <field name="view_mode">pivot,graph,tree</field>
+    </record>
+
+    <!-- Price Comparison Report Views -->
+    <record id="view_price_comparison_graph" model="ir.ui.view">
+        <field name="name">price.comparison.report.graph</field>
+        <field name="model">price.comparison.report</field>
+        <field name="arch" type="xml">
+            <!-- ... Graph content from product_price_log/views/price_comparison_report.xml ... -->
+        </field>
+    </record>
+    <record id="action_price_comparison_report" model="ir.actions.act_window">
+        <field name="name">AMG vs Competitor Prices</field>
+        <field name="res_model">price.comparison.report</field>
+        <field name="view_mode">tree,graph,pivot</field>
+    </record>
+
+    <!-- KPI Reporting Views -->
+    <record id="view_kpi_reporting_tree" model="ir.ui.view">
+        <field name="name">kpi.reporting.tree</field>
+        <field name="model">kpi.target.line</field>
+        <field name="arch" type="xml">
+            <!-- ... Tree content from kpi_management_framework/views/kpi_reporting_views.xml ... -->
+        </field>
+    </record>
+    <record id="action_kpi_reporting" model="ir.actions.act_window">
+        <field name="name">KPI Reporting</field>
+        <field name="res_model">kpi.target.line</field>
+        <field name="view_mode">tree,pivot</field>
+    </record>
+
+    <!-- Dashboards (Client Actions) -->
+    <record id="action_telemarketing_dashboard" model="ir.actions.client">
+        <field name="name">Telemarketing Dashboard</field>
+        <field name="tag">telemarketing_dashboard</field>
+    </record>
+    <record id="action_price_comparison_dashboard" model="ir.actions.client">
+        <field name="name">Price Comparison Dashboard</field>
+        <field name="tag">price_comparison_dashboard_action</field>
+    </record>
+</odoo>

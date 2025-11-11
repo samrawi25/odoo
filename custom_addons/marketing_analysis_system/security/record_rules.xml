@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- CRM Lead Rules -->
+    <record id="crm_lead_rule_company_manager" model="ir.rule">
+      <field name="name">Company Manager: Leads by Company</field>
+      <field name="model_id" ref="crm.model_crm_lead"/>
+      <field name="groups" eval="[(4, ref('marketing_analysis_system.group_company_manager'))]"/>
+      <field name="domain_force">['|', ('company_ids', 'in', user.company_ids.ids), ('company_ids', '=', False)]</field>
+    </record>
+
+    <!-- Competitor Rules -->
+    <record id="competitor_rule_company_manager" model="ir.rule">
+        <field name="name">Company Manager: Competitor by Company</field>
+        <field name="model_id" ref="model_competitor_competitor"/>
+        <field name="groups" eval="[(4, ref('marketing_analysis_system.group_company_manager'))]"/>
+        <field name="domain_force">['|', ('company_ids', 'in', user.company_ids.ids), ('company_ids', '=', False)]</field>
+    </record>
+
+    <!-- Market Intelligence Rules -->
+    <record id="market_intelligence_rule_company_manager" model="ir.rule">
+        <field name="name">Company Manager: MI Records by Company</field>
+        <field name="model_id" ref="model_market_intelligence_market_intelligence"/>
+        <field name="groups" eval="[(4, ref('marketing_analysis_system.group_company_manager'))]"/>
+        <field name="domain_force">['|', ('company_ids', 'in', user.company_ids.ids), ('company_ids', '=', False)]</field>
+    </record>
+
+    <!-- Encounter Visit Rules -->
+    <record id="encounter_visit_rule_sales_user" model="ir.rule">
+      <field name="name">Sales User: Own Encounters</field>
+      <field name="model_id" ref="model_encounter_encounter_visit"/>
+      <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>
+      <field name="domain_force">[('user_id', '=', user.id)]</field>
+    </record>
+    <record id="encounter_visit_rule_sales_manager" model="ir.rule">
+      <field name="name">Sales Manager: Team Encounters</field>
+      <field name="model_id" ref="model_encounter_encounter_visit"/>
+      <field name="groups" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+      <field name="domain_force">['|', ('user_id', '=', user.id), ('team_id.user_id', '=', user.id)]</field>
+    </record>
+    <record id="encounter_visit_rule_company_manager" model="ir.rule">
+      <field name="name">Company Manager: Encounters by Company</field>
+      <field name="model_id" ref="model_encounter_encounter_visit"/>
+      <field name="groups" eval="[(4, ref('marketing_analysis_system.group_company_manager'))]"/>
+      <field name="domain_force">['|', ('company_ids', 'in', user.company_ids.ids), ('company_ids', '=', False)]</field>
+    </record>
+
+    <!-- KPI Rules -->
+    <record id="telemarketing_confirmation_telemarketer_rule" model="ir.rule">
+        <field name="name">Telemarketing Confirmations: Telemarketer Own Records</field>
+        <field name="model_id" ref="model_telemarketing_confirmation"/>
+        <field name="groups" eval="[(4, ref('marketing_analysis_system.group_telemarketer'))]"/>
+        <field name="domain_force">[('telemarketer_id', '=', user.id)]</field>
+    </record>
+    <record id="telemarketing_confirmation_manager_rule" model="ir.rule">
+        <field name="name">Telemarketing Confirmations: Manager Sees All</field>
+        <field name="model_id" ref="model_telemarketing_confirmation"/>
+        <field name="groups" eval="[(4, ref('sales_team.group_sale_manager'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+  </data>
+</odoo>

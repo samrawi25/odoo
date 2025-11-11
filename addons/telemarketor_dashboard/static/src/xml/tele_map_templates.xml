@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE t>
+<t t-name="crm_telemarketing.tele_map_template">
+    <div class="o_crm_tele_map" style="width: 100%; height: 650px; border: 1px solid #ddd;"></div>
+</t>

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_tele_opportunity,access_crm_tele_opportunity,model_crm_tele_opportunity,,1,1,1,1
+access_crm_tele_encounter,access_crm_tele_encounter,model_crm_tele_encounter,,1,1,1,1
+access_crm_tele_campaign,access_crm_tele_campaign,model_crm_tele_campaign,,1,1,1,1
+access_crm_kpi_target,access_crm_kpi_target,model_crm_kpi_target,,1,1,1,1
+access_crm_lead_inherit,access_crm_lead_inherit,model_crm_lead,,1,1,1,1
+access_res_partner_inherit,access_res_partner_inherit,model_res_partner,,1,1,1,1

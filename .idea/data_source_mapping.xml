@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/b9a3f7ba-df13-4cff-914b-21acd9920b0c/console.sql" value="b9a3f7ba-df13-4cff-914b-21acd9920b0c" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/b9a3f7ba-df13-4cff-914b-21acd9920b0c/console_1.sql" value="b9a3f7ba-df13-4cff-914b-21acd9920b0c" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/b9a3f7ba-df13-4cff-914b-21acd9920b0c/console_2.sql" value="b9a3f7ba-df13-4cff-914b-21acd9920b0c" />
+    <file url="file://$PROJECT_DIR$/custom_addons/crm_telemarketing/models/report_telemarketing.py" value="b9a3f7ba-df13-4cff-914b-21acd9920b0c" />
+  </component>
+</project>

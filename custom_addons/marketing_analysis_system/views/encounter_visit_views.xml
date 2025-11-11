@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Visit Title Views -->
+    <record id="view_visit_title_tree" model="ir.ui.view">
+        <field name="name">encounter.visit.title.tree</field>
+        <field name="model">encounter.visit.title</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_visit_titles" model="ir.actions.act_window">
+        <field name="name">Visit Titles</field>
+        <field name="res_model">encounter.visit.title</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Encounter Visit Views -->
+    <record id="view_encounter_visit_tree" model="ir.ui.view">
+        <field name="name">encounter.visit.tree</field>
+        <field name="model">encounter.encounter_visit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="lead_id"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_encounter_visit_form" model="ir.ui.view">
+        <field name="name">encounter.visit.form</field>
+        <field name="model">encounter.encounter_visit</field>
+        <field name="arch" type="xml">
+            <form string="Encounter Visit">
+                <sheet>
+                    <!-- ... Form content from encounter_visit/views/encounter_visit_views.xml ... -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_encounter_visit_map" model="ir.ui.view">
+        <field name="name">encounter.visit.map</field>
+        <field name="model">encounter.encounter_visit</field>
+        <field name="arch" type="xml">
+            <lmap model="encounter.encounter_visit" fields="id,name,latitude,longitude" name-field="name"/>
+        </field>
+    </record>
+    <record id="action_encounter_visit" model="ir.actions.act_window">
+        <field name="name">Encounter Visits</field>
+        <field name="res_model">encounter.encounter_visit</field>
+        <field name="view_mode">tree,form,lmap</field>
+    </record>
+</odoo>

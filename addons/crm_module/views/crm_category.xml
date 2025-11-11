@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="crm_module_category" model="ir.module.category">
+        <field name="name">CRM</field>
+        <field name="sequence">21</field>  <!-- Adjust sequence as needed -->
+        <field name="visible">True</field>
+    </record>
+</odoo>

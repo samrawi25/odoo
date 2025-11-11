@@ -1,0 +1,16 @@
+<templates>
+    <div t-name="warehouse_barcode_scanner.BarcodeScannerTemplate" class="o_barcode_scanner">
+        <div class="o_barcode_scanner_header">
+            <h1>Scan: <t t-esc="state.picking ? state.picking.name : ''"/></h1>
+            <input type="text" t-ref="barcodeInput" t-on-change="onBarcodeScanned" placeholder="Scan a barcode..."/>
+        </div>
+        <div class="o_barcode_scanner_body">
+            <ul class="o_barcode_lines">
+                <li t-foreach="state.scannedLines" t-as="line" t-key="line.product_id">
+                    <span t-esc="line.product_name"/>
+                    <span class="qty"><t t-esc="line.qty_done"/></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</templates>

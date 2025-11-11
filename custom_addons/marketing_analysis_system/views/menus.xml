@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- TOP LEVEL MENUS UNDER CRM -->
+    <menuitem id="menu_phonecall_root" name="Phone Calls" parent="crm.crm_menu_root" sequence="10"/>
+    <menuitem id="menu_market_intelligence_root" name="Market Intelligence" parent="crm.crm_menu_root" sequence="15"/>
+    <menuitem id="menu_encounter_visit_root" name="Encounter Visits" parent="crm.crm_menu_root" sequence="20"/>
+    <menuitem id="menu_kpi_management_root" name="KPI Management" parent="crm.crm_menu_root" sequence="25"/>
+
+    <!-- Phone Call Sub-menus -->
+    <menuitem id="menu_crm_phonecall_list" name="All Calls" parent="menu_phonecall_root" action="crm_phonecall.crm_case_inbound_phone_action" sequence="1"/>
+    <menuitem id="menu_crm_phonecall_report" name="Phone Call Analysis" parent="crm.crm_menu_report" action="crm_phonecall.crm_case_report_phone_action" sequence="10"/>
+    <menuitem id="menu_crm_phonecall_summary_config" name="Call Summaries" parent="crm.crm_menu_config" action="crm_phonecall_summary_action" sequence="15"/>
+
+    <!-- Market Intelligence Sub-menus -->
+    <menuitem id="menu_mi_list" name="Market Intelligence" parent="menu_market_intelligence_root" action="market_intelligence_action" sequence="1"/>
+    <menuitem id="menu_competitors_list" name="Competitors" parent="menu_market_intelligence_root" action="competitor_action" sequence="5"/>
+    <menuitem id="menu_price_comparison_dashboard" name="Price Dashboard" parent="menu_market_intelligence_root" action="action_price_comparison_dashboard" sequence="10"/>
+    <menuitem id="menu_product_price_logs" name="Product Price Logs" parent="menu_market_intelligence_root" action="action_product_price_log" sequence="15"/>
+    <menuitem id="menu_mi_settings" name="Settings" parent="menu_market_intelligence_root" sequence="100"/>
+    <menuitem id="menu_competitor_industries" name="Competitor Industries" parent="menu_mi_settings" action="competitor_industries_action" sequence="1"/>
+
+    <!-- Encounter Visit Sub-menus -->
+    <menuitem id="menu_encounter_visits_list" name="Visits" parent="menu_encounter_visit_root" action="action_encounter_visit" sequence="1"/>
+    <menuitem id="menu_encounter_visit_titles" name="Visit Titles" parent="menu_encounter_visit_root" action="action_visit_titles" sequence="5"/>
+
+    <!-- KPI Management Sub-menus -->
+    <menuitem id="menu_kpi_targets" name="KPI Targets" parent="menu_kpi_management_root" action="kpi_target_action" sequence="1" groups="sales_team.group_sale_manager"/>
+    <menuitem id="menu_kpi_target_lines" name="KPI Lines" parent="menu_kpi_management_root" action="action_kpi_target_line" sequence="5"/>
+    <menuitem id="menu_kpi_history" name="KPI History" parent="menu_kpi_management_root" action="action_kpi_history" sequence="10"/>
+    <menuitem id="menu_kpi_confirmations" name="Telemarketing Confirmations" parent="menu_kpi_management_root" action="action_telemarketing_confirmation" sequence="15"/>
+    <menuitem id="menu_kpi_definitions_config" name="KPI Definitions" parent="crm.crm_menu_config" action="kpi_definition_action" sequence="90"/>
+
+    <!-- Reporting Menus -->
+    <menuitem id="menu_telemarketing_dashboard" name="Telemarketing Dashboard" parent="crm.crm_menu_report" action="action_telemarketing_dashboard" sequence="20"/>
+    <menuitem id="menu_telemarketing_report" name="Telemarketing Report" parent="crm.crm_menu_report" action="action_report_telemarketing" sequence="25"/>
+    <menuitem id="menu_price_comparison_report" name="Price Comparison Report" parent="crm.crm_menu_report" action="action_price_comparison_report" sequence="30"/>
+    <menuitem id="menu_kpi_reporting" name="KPI Reporting" parent="crm.crm_menu_report" action="action_kpi_reporting" sequence="35"/>
+
+</odoo>

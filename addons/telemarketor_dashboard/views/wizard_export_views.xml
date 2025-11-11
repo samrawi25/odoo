@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_crm_tele_export_wizard" model="ir.actions.act_window">
+        <field name="name">Export Records</field>
+        <field name="res_model">crm.tele_export_wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_crm_tele_export_wizard_form" model="ir.ui.view">
+        <field name="name">crm.tele.export.wizard.form</field>
+        <field name="model">crm.tele_export_wizard</field>
+        <field name="arch" type="xml">
+            <form string="Export">
+                <sheet>
+                    <group>
+                        <field name="model"/>
+                        <field name="format"/>
+                        <field name="filename"/>
+                    </group>
+                    <group>
+                        <field name="file" filename="file_name" invisible="1"/>
+                        <field name="file_name" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button string="Export" type="object" name="action_export" class="btn-primary"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

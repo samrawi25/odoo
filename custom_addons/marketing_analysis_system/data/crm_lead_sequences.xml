@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- From crm_lead_code -->
+    <record id="sequence_lead" model="ir.sequence">
+        <field name="name">Lead Code</field>
+        <field name="code">crm.lead</field>
+        <field eval="4" name="padding" />
+        <field name="prefix">LD</field>
+    </record>
+</odoo>

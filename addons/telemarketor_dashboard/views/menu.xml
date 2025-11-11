@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_crm_tele_root" name="AMG CRM" sequence="10"/>
+    <menuitem id="menu_crm_tele_marketing" name="Telemarketing" parent="menu_crm_tele_root" sequence="1"/>
+
+    <menuitem id="menu_crm_tele_leads" name="Leads" parent="menu_crm_tele_marketing" action="action_crm_lead_tree" sequence="1"/>
+    <menuitem id="menu_crm_tele_opportunities" name="Opportunities" parent="menu_crm_tele_marketing" action="action_crm_tele_opportunity_tree" sequence="2"/>
+    <menuitem id="menu_crm_tele_encounters" name="Encounters" parent="menu_crm_tele_marketing" action="action_crm_tele_encounter_tree" sequence="3"/>
+    <menuitem id="menu_crm_tele_campaigns" name="Campaigns" parent="menu_crm_tele_marketing" action="action_crm_tele_campaign_tree" sequence="4"/>
+    <menuitem id="menu_crm_tele_kpis" name="KPIs" parent="menu_crm_tele_marketing" action="action_crm_kpi_tree" sequence="5"/>
+    <menuitem id="menu_crm_tele_exports" name="Exports" parent="menu_crm_tele_marketing" action="action_crm_tele_export_wizard" sequence="6"/>
+</odoo>

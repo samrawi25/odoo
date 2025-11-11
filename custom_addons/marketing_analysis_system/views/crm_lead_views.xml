@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Combined Inherited Form View for CRM Lead -->
+    <record id="view_crm_lead_form_inherit_merged" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.merged</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <!-- From crm_lead_code: Add Code field -->
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="code" class="oe_inline"/>
+            </xpath>
+
+            <!-- From crm_lead_geolocation: Add Company IDs -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="company_ids" widget="many2many_tags" />
+            </xpath>
+
+            <!-- From custom_crm: Add TIN Number -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="tin_number"/>
+            </xpath>
+
+            <!-- From crm_telemarketing & encounter_visit: Add Stat Buttons -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" icon="fa-check-square-o" type="object" name="action_view_data_quality_calls">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="data_quality_score"/> %</span>
+                        <span class="o_stat_text">Data Quality</span>
+                    </div>
+                </button>
+                <button class="oe_stat_button" icon="fa-map-marker" name="action_view_encounter_visits" type="object">
+                    <field name="encounter_visit_count" string="Visits" widget="statinfo" />
+                </button>
+            </xpath>
+
+            <!-- From crm_lead_geolocation: Add Geolocation fields -->
+            <xpath expr="//sheet/notebook/page[@name='internal_notes']" position="before">
+                <page string="Geolocation" name="geolocation">
+                    <group>
+                        <field name="latitude" readonly="1" force_save="1"/>
+                        <field name="longitude" readonly="1" force_save="1"/>
+                    </group>
+                </page>
+            </xpath>
+
+            <!-- From crm_telemarketing: Add Telemarketing page -->
+            <xpath expr="//sheet/notebook" position="inside">
+                 <page string="Telemarketing" name="telemarketing">
+                    <field name="telemarketing_call_ids" mode="tree,form">
+                       <!-- Tree and Form view definitions from crm_telemarketing/crm_leads_views.xml -->
+                    </field>
+                </page>
+            </xpath>
+
+            <!-- From crm_probability_cleaner: Hide fields -->
+            <xpath expr="//label[@for='probability']/.." position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Leaflet Map View for Leads -->
+    <record id="view_crm_lead_map" model="ir.ui.view">
+        <field name="name">crm.lead.map</field>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            <lmap model="crm.lead"
+                  fields="id,name,partner_name,latitude,longitude"
+                  name-field="partner_name"
+                  default-lat="8.998093"
+                  default-lng="38.777651"
+                  default-zoom="12"/>
+        </field>
+    </record>
+
+    <!-- Add 'lmap' to view modes -->
+    <record id="crm.crm_lead_all_leads" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form,calendar,pivot,graph,activity,lmap</field>
+    </record>
+
+    <!-- Other inherited views (Tree, Kanban, etc.) would be merged here similarly -->
+
+</odoo>

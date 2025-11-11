@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Base Views from crm_phonecall -->
+    <record id="crm_case_inbound_phone_tree_view" model="ir.ui.view">
+        <field name="name">CRM - Phone Calls Tree</field>
+        <field name="model">crm.phonecall</field>
+        <field name="arch" type="xml">
+            <tree string="Phone Calls">
+                <field name="date"/>
+                <field name="summary_id"/>
+                <field name="partner_id"/>
+                <field name="opportunity_id"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="crm_case_phone_form_view" model="ir.ui.view">
+        <field name="name">CRM - Phone Call Form</field>
+        <field name="model">crm.phonecall</field>
+        <field name="arch" type="xml">
+            <form string="Phone Call">
+                <header>
+                    <button name="action_schedule" string="Schedule a Call" class="oe_highlight" type="object" attrs="{'invisible':[('state','=','done')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="summary_id"/>
+                            <field name="partner_id"/>
+                            <field name="opportunity_id"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="user_id" widget="many2one_avatar_user"/>
+                            <field name="duration"/>
+                        </group>
+                    </group>
+                    <group name="satisfaction_survey" string="Satisfaction Survey">
+                        <field name="service_rating" widget="priority"/>
+                        <field name="product_rating" widget="priority"/>
+                    </group>
+                    <group name="data_quality_check" string="Data Quality Check">
+                        <field name="name_confirmed"/>
+                        <field name="address_confirmed"/>
+                        <field name="phone_confirmed"/>
+                    </group>
+                    <notebook>
+                        <page string="Notes">
+                            <field name="description" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Views for Phonecall Summary -->
+    <record id="crm_phonecall_summary_view_form" model="ir.ui.view">
+        <field name="name">CRM Phonecall Summary Form</field>
+        <field name="model">crm.phonecall.summary</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="crm_phonecall_summary_view_tree" model="ir.ui.view">
+        <field name="name">CRM Phonecall Summary Tree</field>
+        <field name="model">crm.phonecall.summary</field>
+        <field name="arch" type="xml">
+            <tree editable="top">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="crm_phonecall_summary_action" model="ir.actions.act_window">
+        <field name="name">Summaries</field>
+        <field name="res_model">crm.phonecall.summary</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Wizard View -->
+    <record id="phonecall_to_phonecall_view" model="ir.ui.view">
+        <field name="name">crm.phonecall2phonecall.form</field>
+        <field name="model">crm.phonecall2phonecall</field>
+        <field name="arch" type="xml">
+            <form string="Schedule/Log Call">
+                <group>
+                    <field name="summary_id" invisible="0"/>
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="team_id"/>
+                    <field name="duration"/>
+                </group>
+                <footer>
+                    <button name="action_schedule" string="Schedule a Call" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

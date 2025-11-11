@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Report Action Definition -->
+    <report
+            id="stock_barcode_report"
+            model="stock.picking"
+            string="Barcode Picking Report"
+            report_type="qweb-pdf"
+            name="stock_barcode.report_stock_barcode_document"
+            file="stock_barcode.report_stock_barcode_document"
+            print_report_name="(object.name or '').replace('/', '_')"
+    />
+
+    <!-- QWeb Report Template -->
+    <template id="report_stock_barcode_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Barcode Picking Report: <span t-field="o.name"/></h2>
+                        <p>This is a placeholder for your barcode picking report.</p>
+                        <p>
+                            **Picking Type:** <span t-field="o.picking_type_id.name"/><br/>
+                            **Source Location:** <span t-field="o.location_id.display_name"/><br/>
+                            **Destination Location:** <span t-field="o.location_dest_id.display_name"/><br/>
+                            **Scheduled Date:** <span t-field="o.scheduled_date"/><br/>
+                        </p>
+                        <h3>Operations:</h3>
+                        <table class="table table-sm o_main_table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Demand</th>
+                                    <th>Done</th>
+                                    <th t-if="o.picking_type_id.code != 'incoming'">Lot/Serial Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.move_line_ids_without_package" t-as="move_line">
+                                    <td><span t-field="move_line.product_id.display_name"/></td>
+                                    <td><span t-field="move_line.product_uom_qty"/> <span t-field="move_line.product_uom_id.name"/></td>
+                                    <td><span t-field="move_line.qty_done"/> <span t-field="move_line.product_uom_id.name"/></td>
+                                    <td t-if="o.picking_type_id.code != 'incoming'"><span t-field="move_line.lot_id.name"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
+    

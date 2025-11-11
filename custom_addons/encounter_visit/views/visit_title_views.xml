@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Tree View for Visit Titles -->
+    <record id="view_visit_title_tree" model="ir.ui.view">
+        <field name="name">encounter.visit.title.tree</field>
+        <field name="model">encounter.visit.title</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Visit Titles -->
+    <record id="view_visit_title_form" model="ir.ui.view">
+        <field name="name">encounter.visit.title.form</field>
+        <field name="model">encounter.visit.title</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View for Visit Titles -->
+    <record id="view_visit_title_search" model="ir.ui.view">
+        <field name="name">encounter.visit.title.search</field>
+        <field name="model">encounter.visit.title</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Inactive" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Active" name="group_active" context="{'group_by': 'active'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

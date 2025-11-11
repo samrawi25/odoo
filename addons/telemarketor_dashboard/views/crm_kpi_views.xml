@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Graph view for KPI achieved vs target -->
+    <record id="view_crm_kpi_graph" model="ir.ui.view">
+        <field name="name">crm.kpi.target.graph</field>
+        <field name="model">crm.kpi_target</field>
+        <field name="arch" type="xml">
+            <graph string="KPI Achieved vs Target" type="bar">
+                <field name="user_id" type="row"/>
+                <field name="achieved_value" type="measure"/>
+                <field name="target_value" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Update action to include graph view -->
+    <record id="action_crm_kpi_tree" model="ir.actions.act_window">
+        <field name="name">KPI Targets</field>
+        <field name="res_model">crm.kpi_target</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+</odoo>

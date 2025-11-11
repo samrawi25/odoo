@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Reporting Tree View: Fixed by replacing 'colors' with 'decoration-...' -->
+    <record id="view_kpi_reporting_tree"  model="ir.ui.view">
+        <field name="name">kpi.reporting.tree</field>
+        <field name="model">kpi.target.line</field>
+        <field name="arch" type="xml">
+            <tree string="KPI Reporting"
+                  create="false" edit="false" delete="false"
+                  decoration-success="achievement_percentage &gt;= 90"
+                  decoration-danger="achievement_percentage &lt; 50">
+
+                <field name="target_id"/>
+                <field name="user_id"/>
+                <field name="kpi_definition_id"/>
+                <field name="target_value"/>
+                <field name="actual_value"/>
+                <field name="achievement_percentage" widget="progressbar"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Reporting Pivot View -->
+    <record id="view_kpi_reporting_pivot" model="ir.ui.view">
+        <field name="name">kpi.reporting.pivot</field>
+        <field name="model">kpi.target.line</field>
+        <field name="arch" type="xml">
+            <pivot string="KPI Performance">
+                <field name="user_id" type="row"/>
+                <field name="kpi_definition_id" type="col"/>
+                <field name="achievement_percentage" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Reporting Search View -->
+    <record id="view_kpi_reporting_search" model="ir.ui.view">
+        <field name="name">kpi.reporting.search</field>
+        <field name="model">kpi.target.line</field>
+        <field name="arch" type="xml">
+            <search string="Search KPI Reporting">
+                <field name="user_id"/>
+                <field name="kpi_definition_id"/>
+                <field name="target_id" string="KPI Target Document"/>
+
+                <filter string="My Lines" name="my_lines" domain="[('user_id', '=', uid)]"/>
+                <filter string="Active" name="active" domain="[('date_end', '&gt;=', context_today())]"/>
+
+                <group expand="0" string="Group By">
+                    <filter string="Assigned To" name="group_by_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="KPI Definition" name="group_by_kpi" context="{'group_by': 'kpi_definition_id'}"/>
+                    <filter string="Target Document" name="group_by_target" context="{'group_by': 'target_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Reporting Window Action -->
+    <record id="action_kpi_reporting" model="ir.actions.act_window">
+        <field name="name">KPI Reporting</field>
+        <field name="res_model">kpi.target.line</field>
+        <field name="view_mode">tree,pivot,form</field>
+        <field name="view_ids" eval="[
+            (5,0,0),
+            (0,0,{'view_mode':'tree','view_id':ref('kpi_management_framework.view_kpi_reporting_tree')}),
+            (0,0,{'view_mode':'pivot','view_id':ref('kpi_management_framework.view_kpi_reporting_pivot')}),
+        ]"/>
+
+        <field name="search_view_id" ref="kpi_management_framework.view_kpi_reporting_search"/>
+
+        <field name="context">{'search_default_group_by_user':1}</field>
+    </record>
+
+    <!-- Reporting Menu Item -->
+    <menuitem id="menu_kpi_reporting"
+              name="KPI Reporting"
+              parent="crm.crm_menu_report"
+              action="action_kpi_reporting"
+              sequence="60"/>
+</odoo>

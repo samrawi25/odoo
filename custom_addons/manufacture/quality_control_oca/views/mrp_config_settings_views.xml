@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_mrp_quality_oca_final" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.mrp.quality.oca.final</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="mrp.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Find the enterprise quality setting by its ID and replace it -->
+            <xpath expr="//setting[@id='quality_control_mrp']" position="replace">
+                <setting id="quality_control_mrp_oca" help="Create Quality Inspections automatically from Manufacturing Orders using the OCA module.">
+                    <field name="group_quality_control_oca_mrp_integration"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

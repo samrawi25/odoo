@@ -1,0 +1,10 @@
+log/odoo.log
+.vscode
+.tx
+filestore
+venv
+crm.conf
+odooold.conf
+odoo_17.code-workspace
+custom_addons/amg_crm
+custom_addons/geospatial

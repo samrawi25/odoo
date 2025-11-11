@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_commission_record_tree" model="ir.ui.view">
+        <field name="name">crm.commission.record.tree</field>
+        <field name="model">crm.commission.record</field>
+        <field name="arch" type="xml">
+            <tree create="false" edit="false">
+                <field name="create_date" string="Date"/>
+                <field name="salesperson_id"/>
+                <field name="sale_order_id"/>
+                <field name="invoice_id"/>
+                <field name="commission_amount" sum="Total Commission"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-warning="state == 'invoiced'" decoration-success="state == 'paid'" decoration-danger="state == 'cancel'"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- [NEW] Form view for commission records to show details and chatter -->
+    <record id="view_crm_commission_record_form" model="ir.ui.view">
+        <field name="name">crm.commission.record.form</field>
+        <field name="model">crm.commission.record</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="salesperson_id"/>
+                            <field name="sale_order_id"/>
+                            <field name="invoice_id"/>
+                        </group>
+                        <group>
+                            <field name="commission_amount"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="state" widget="badge"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_crm_commission_record" model="ir.actions.act_window">
+        <field name="name">Commission Records</field>
+        <field name="res_model">crm.commission.record</field>
+        <!-- [FIXED] Added form to view_mode -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_crm_commission_record"
+        name="Commissions"
+        parent="sale.menu_sale_report"
+        action="action_crm_commission_record"
+        sequence="20"/>
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_tele" model="ir.ui.view">
+        <field name="name">res.partner.form.tele</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook/page[@string='Sales &amp; Purchases']" position="inside">
+                <group>
+                    <field name="company_type_custom"/>
+                    <field name="tin_number"/>
+                    <field name="date_of_establishment"/>
+                    <field name="capital"/>
+                    <field name="contractor_grade"/>
+                </group>
+                <group>
+                    <field name="latitude"/>
+                    <field name="longitude"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_document_fixed_discount" inherit_id="account.report_invoice_document">
+
+        <!--
+            We anchor to 'th_quantity' instead of 'th_price_unit' because
+            'th_price_unit' can disappear depending on system settings (e.g., if discounts are disabled),
+            whereas 'th_quantity' is always visible. This makes the module more stable.
+        -->
+
+        <!-- Add 'Fixed Discount' column header -->
+        <xpath expr="//th[@name='th_quantity']" position="after">
+            <th name="th_fixed_discount" class="text-end"><span>Fixed Disc.</span></th>
+        </xpath>
+
+        <!-- Add the fixed discount value for each line -->
+        <xpath expr="//td[@name='td_quantity']" position="after">
+            <td name="td_fixed_discount" class="text-end">
+                <span class="text-nowrap" t-field="line.fixed_discount" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+            </td>
+        </xpath>
+
+    </template>
+</odoo>

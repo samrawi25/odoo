@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="product_price_log.Dashboard">
+        <div class="o_price_dashboard container-fluid p-4" style="overflow:auto; max-height:92vh;">
+            <!-- Dashboard Title -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h1 class="text-center mb-3">AMG vs Competitor Price Dashboard</h1>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="row mb-4 p-3 bg-white border rounded shadow-sm">
+                <div class="col-md-3 mb-2">
+                    <label class="form-label fw-bold">Products</label>
+                    <select t-ref="productSelect" class="form-select me-2" multiple="multiple"/>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label class="form-label fw-bold">Competitors</label>
+                    <select t-ref="competitorSelect" class="form-select me-2" multiple="multiple"/>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="form-label fw-bold">Start Date</label>
+                            <input type="date" t-ref="startDate" class="form-control"/>
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label fw-bold">End Date</label>
+                            <input type="date" t-ref="endDate" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-2 d-flex align-items-end">
+                    <button type="button" class="btn btn-primary w-100" t-on-click="applyFilter">
+                        <i class="fa fa-filter me-1"/> Apply Filter
+                    </button>
+                </div>
+            </div>
+
+            <!-- View Mode & Chart Type Buttons -->
+            <div class="row mb-3">
+                <!-- View Mode -->
+                <div class="col-md-6 mb-2">
+                    <div class="btn-group w-100" role="group">
+                        <button type="button"
+                                t-att-class="state.viewMode === 'trend' ? 'btn btn-primary' : 'btn btn-outline-primary'"
+                                t-on-click="() => switchView('trend')">
+                            Trend View
+                        </button>
+                        <button type="button"
+                                t-att-class="state.viewMode === 'comparison' ? 'btn btn-primary' : 'btn btn-outline-primary'"
+                                t-on-click="() => switchView('comparison')">
+                            Comparison View
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chart Type -->
+                <div class="col-md-6 mb-2">
+                    <div class="btn-group w-100" role="group">
+                        <button type="button"
+                                t-att-class="state.chartType === 'bar' ? 'btn btn-primary' : 'btn btn-outline-primary'"
+                                t-on-click="() => switchChart('bar')">
+                            Bar
+                        </button>
+                        <button type="button"
+                                t-att-class="state.chartType === 'line' ? 'btn btn-primary' : 'btn btn-outline-primary'"
+                                t-on-click="() => switchChart('line')">
+                            Line
+                        </button>
+                        <button type="button"
+                                t-att-class="state.chartType === 'pie' ? 'btn btn-primary' : 'btn btn-outline-primary'"
+                                t-on-click="() => switchChart('pie')">
+                            Pie
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body" style="position: relative;">
+                            <div style="height: 450px;">
+                                <canvas t-ref="chartCanvas"/>
+                            </div>
+                            <div t-if="state.loading" class="o_dashboard_loader d-flex justify-content-center align-items-center" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.5);">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_price_comparison_dashboard" model="ir.actions.client">
+        <field name="name">Price Comparison Dashboard</field>
+        <field name="tag">price_comparison_dashboard_action</field>
+    </record>
+    <menuitem id="menu_price_comparison_dashboard"
+              name="Price Dashboard"
+              parent="market_intelligence.market_intelligence_menu_root"
+              action="action_price_comparison_dashboard"/>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_commission_plan_manager,crm.commission.plan manager,model_crm_commission_plan,sales_team.group_sale_manager,1,1,1,1
+access_crm_commission_plan_user,crm.commission.plan user,model_crm_commission_plan,base.group_user,1,0,0,0
+access_crm_commission_record_manager,crm.commission.record manager,model_crm_commission_record,sales_team.group_sale_manager,1,1,1,1
+access_crm_commission_record_user,crm.commission.record user,model_crm_commission_record,base.group_user,1,0,0,0
+access_crm_commission_record_salesman,crm.commission.record salesman,model_crm_commission_record,sales_team.group_sale_salesman,1,1,0,0

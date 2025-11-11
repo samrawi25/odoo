@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Leads Tree View -->
+    <record id="view_crm_lead_tree_inherit_patch" model="ir.ui.view">
+        <field name="name">crm.lead.tree.inherit.patch</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+        <field name="arch" type="xml">
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="probability" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Opportunities Tree View -->
+    <record id="view_crm_opportunity_tree_inherit_patch" model="ir.ui.view">
+        <field name="name">crm.opportunity.tree.inherit.patch</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+        <field name="arch" type="xml">
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="probability" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Main Kanban View -->
+    <record id="view_crm_lead_kanban_inherit_patch" model="ir.ui.view">
+        <field name="name">crm.lead.kanban.inherit.patch</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_lead_kanban"/>
+        <field name="arch" type="xml">
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Opportunity Kanban View - Keep probability field but hide it -->
+    <record id="view_crm_opportunity_kanban_inherit_patch" model="ir.ui.view">
+        <field name="name">crm.opportunity.kanban.inherit.patch</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+        <field name="arch" type="xml">
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="probability" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Form View - Multiple approaches for different sections -->
+    <record id="view_crm_lead_form_priority_remove" model="ir.ui.view">
+        <field name="name">crm.lead.form.priority.remove</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Remove priority widget from header section -->
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_form_tags_remove" model="ir.ui.view">
+        <field name="name">crm.lead.form.tags.remove</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Remove tags from form -->
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Search Views -->
+    <record id="view_crm_lead_search_inherit_patch" model="ir.ui.view">
+        <field name="name">crm.lead.search.inherit.patch</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_crm_opportunity_search_inherit_patch" model="ir.ui.view">
+        <field name="name">crm.opportunity.search.inherit.patch</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+
+    <!-- Quick Create Form -->
+    <record id="view_crm_quick_create_inherit_patch" model="ir.ui.view">
+        <field name="name">crm.quick.create.inherit.patch</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+        <field name="arch" type="xml">
+            <field name="priority" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

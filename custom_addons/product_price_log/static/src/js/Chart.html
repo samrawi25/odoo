@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AMG vs Competitor Price Comparison Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          text-align: center;
+          margin: 20px;
+        }
+        .controls {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 15px;
+        }
+        input, select, button {
+          padding: 6px 10px;
+          border-radius: 5px;
+          border: 1px solid #aaa;
+        }
+        button {
+          background-color: #007bff;
+          color: white;
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+        select[multiple] {
+          height: 70px;
+        }
+        canvas {
+          max-width: 900px;
+          margin: 20px auto;
+          display: block;
+        }
+    </style>
+</head>
+<body>
+
+<h2>AMG vs Competitor Price Dashboard</h2>
+
+<div class="controls">
+    <input type="text" id="searchProduct" placeholder="Search product...">
+
+    <select id="productSelect" multiple>
+        <option value="Product X">Product X</option>
+        <option value="Product Y">Product Y</option>
+        <option value="Product Z">Product Z</option>
+    </select>
+
+    <select id="competitorSelect" multiple>
+        <option value="AMG">AMG</option>
+        <option value="Competitor A">Competitor A</option>
+        <option value="Competitor B">Competitor B</option>
+        <option value="Competitor C">Competitor C</option>
+    </select>
+
+    <input type="date" id="startDate">
+    <input type="date" id="endDate">
+</div>
+
+<div class="controls">
+    <button id="barBtn">Bar Chart</button>
+    <button id="lineBtn">Line Chart</button>
+    <button id="pieBtn">Pie Chart</button>
+    <button id="resetZoom">Reset Zoom</button>
+</div>
+
+<canvas id="priceChart" width="900" height="400"></canvas>
+
+<script>
+    const ctx = document.getElementById('priceChart').getContext('2d');
+
+    const rawData = [
+      { date: '2025-11-01', company: 'AMG', product: 'Product X', price: 100 },
+      { date: '2025-11-01', company: 'Competitor A', product: 'Product X', price: 98 },
+      { date: '2025-11-02', company: 'AMG', product: 'Product X', price: 102 },
+      { date: '2025-11-02', company: 'Competitor A', product: 'Product X', price: 99 },
+      { date: '2025-11-03', company: 'AMG', product: 'Product X', price: 101 },
+      { date: '2025-11-03', company: 'Competitor A', product: 'Product X', price: 100 },
+      { date: '2025-11-01', company: 'Competitor B', product: 'Product Y', price: 95 },
+      { date: '2025-11-02', company: 'Competitor B', product: 'Product Y', price: 96 },
+      { date: '2025-11-03', company: 'Competitor B', product: 'Product Y', price: 97 },
+      { date: '2025-11-03', company: 'AMG', product: 'Product Z', price: 103 },
+      { date: '2025-11-02', company: 'Competitor C', product: 'Product Z', price: 92 },
+    ];
+
+    let currentChartType = 'bar';
+    let currentChart;
+
+    function getColor(index, total) {
+      const hue = (index / total) * 360;
+      return `hsl(${hue}, 65%, 45%)`;
+    }
+
+    function getFilteredData() {
+      const searchValue = document.getElementById('searchProduct').value.toLowerCase();
+      const selectedProducts = Array.from(document.getElementById('productSelect').selectedOptions).map(o => o.value);
+      const selectedCompetitors = Array.from(document.getElementById('competitorSelect').selectedOptions).map(o => o.value);
+      const start = document.getElementById('startDate').value;
+      const end = document.getElementById('endDate').value;
+
+      return rawData.filter(item => {
+        const matchesSearch = !searchValue || item.product.toLowerCase().includes(searchValue);
+        const matchesProduct = selectedProducts.length === 0 || selectedProducts.includes(item.product);
+        const matchesCompetitor = selectedCompetitors.length === 0 || selectedCompetitors.includes(item.company);
+        const matchesDate = (!start || item.date >= start) && (!end || item.date <= end);
+        return matchesSearch && matchesProduct && matchesCompetitor && matchesDate;
+      });
+    }
+
+    function renderChart(type, filteredData) {
+      if (currentChart) currentChart.destroy();
+
+      let labels = [...new Set(filteredData.map(d => d.date))];
+      let companies = [...new Set(filteredData.map(d => d.company))];
+      let datasets = [];
+
+      if (type === 'pie') {
+        // Average price per company
+        const companyGroups = {};
+        filteredData.forEach(d => {
+          if (!companyGroups[d.company]) companyGroups[d.company] = [];
+          companyGroups[d.company].push(d.price);
+        });
+
+        const pieLabels = Object.keys(companyGroups);
+        const pieData = pieLabels.map(c => {
+          const values = companyGroups[c];
+          return values.reduce((a, b) => a + b, 0) / values.length;
+        });
+        const colors = pieLabels.map((_, i) => getColor(i, pieLabels.length));
+
+        currentChart = new Chart(ctx, {
+          type: 'pie',
+          data: { labels: pieLabels, datasets: [{ label: 'Average Price', data: pieData, backgroundColor: colors }] },
+          options: { responsive: true, plugins: { title: { display: true, text: 'Average Price Comparison' }, legend: { position: 'right' } } }
+        });
+        return;
+      }
+
+      // Bar or Line with detailed tooltip
+      datasets = companies.map((company, index) => {
+        const data = labels.map(date => {
+          const items = filteredData.filter(d => d.date === date && d.company === company);
+          return items.length ? items.reduce((sum, i) => sum + i.price, 0) / items.length : 0;
+        });
+
+        // Store raw items per point for tooltip
+        const meta = labels.map(date => filteredData.filter(d => d.date === date && d.company === company));
+
+        return {
+          label: company,
+          data,
+          backgroundColor: getColor(index, companies.length),
+          borderColor: getColor(index, companies.length),
+          fill: false,
+          tension: 0.1,
+          meta
+        };
+      });
+
+      currentChart = new Chart(ctx, {
+        type,
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'top' },
+            title: { display: true, text: `Price Comparison (${type} Chart)` },
+            tooltip: {
+  callbacks: {
+    label: function(context) {
+      const selectedProducts = Array.from(document.getElementById('productSelect').selectedOptions).map(o => o.value);
+      const items = context.dataset.meta[context.dataIndex];
+
+      // Filter items to show only selected products, if any
+      const filteredItems = selectedProducts.length
+        ? items.filter(i => selectedProducts.includes(i.product))
+        : items;
+
+      // If nothing matches, show nothing
+      if (filteredItems.length === 0) return '';
+
+      return filteredItems.map(i => `${i.company} / ${i.product}: $${i.price}`).join('\n');
+    }
+  }
+}
+
+          },
+          scales: {
+            x: { title: { display: true, text: 'Date' } },
+            y: { title: { display: true, text: 'Price' }, beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    function updateChart() {
+      const filtered = getFilteredData();
+      renderChart(currentChartType, filtered);
+    }
+
+    // Chart type buttons
+    document.getElementById('barBtn').addEventListener('click', () => { currentChartType = 'bar'; updateChart(); });
+    document.getElementById('lineBtn').addEventListener('click', () => { currentChartType = 'line'; updateChart(); });
+    document.getElementById('pieBtn').addEventListener('click', () => { currentChartType = 'pie'; updateChart(); });
+    document.getElementById('resetZoom').addEventListener('click', () => currentChart.resetZoom());
+
+    // Auto-update filters
+    document.querySelectorAll('#searchProduct, #productSelect, #competitorSelect, #startDate, #endDate')
+      .forEach(el => el.addEventListener('input', updateChart));
+
+    // Initial chart
+    renderChart(currentChartType, rawData);
+</script>
+
+</body>
+</html>

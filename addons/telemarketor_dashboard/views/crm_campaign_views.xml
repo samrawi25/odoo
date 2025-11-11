@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_crm_tele_campaign_tree" model="ir.actions.act_window">
+        <field name="name">Campaigns</field>
+        <field name="res_model">crm.tele_campaign</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_crm_tele_campaign_tree" model="ir.ui.view">
+        <field name="name">crm.tele.campaign.tree</field>
+        <field name="model">crm.tele_campaign</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="campaign_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_tele_campaign_form" model="ir.ui.view">
+        <field name="name">crm.tele.campaign.form</field>
+        <field name="model">crm.tele_campaign</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="campaign_type"/>
+                        <field name="budget"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

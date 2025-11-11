@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Client action to open the map -->
+    <record id="action_crm_tele_map" model="ir.actions.client">
+        <field name="name">CRM Telemarketing Map</field>
+        <field name="tag">crm_tele_map_action</field>
+    </record>
+
+    <record id="menu_crm_tele_map" model="ir.ui.menu">
+        <field name="name">Map</field>
+        <field name="parent" ref="menu_crm_tele_marketing"/>
+        <field name="action" ref="action_crm_tele_map"/>
+        <field name="sequence">7</field>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+<!-- /crm_telemarketing/data/sequence_data.xml -->
+<odoo>
+    <record id="seq_tele_opportunity" model="ir.sequence">
+        <field name="name">Tele Opportunity</field>
+        <field name="prefix">TPOP</field>
+        <field name="padding">6</field>
+        <field name="code">crm.tele_opportunity</field>
+    </record>
+</odoo>

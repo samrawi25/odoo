@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_crm_tele_opportunity_tree" model="ir.actions.act_window">
+        <field name="name">Tele Opportunities</field>
+        <field name="res_model">crm.tele_opportunity</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_crm_tele_opportunity_tree" model="ir.ui.view">
+        <field name="name">crm.tele.opportunity.tree</field>
+        <field name="model">crm.tele_opportunity</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="lead_id"/>
+                <field name="partner_id"/>
+                <field name="owner_id"/>
+                <field name="expected_total_sales_value"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_tele_opportunity_form" model="ir.ui.view">
+        <field name="name">crm.tele.opportunity.form</field>
+        <field name="model">crm.tele_opportunity</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="lead_id"/>
+                        <field name="partner_id"/>
+                        <field name="owner_id"/>
+                    </group>
+                    <group>
+                        <field name="expected_total_sales_value"/>
+                        <field name="expected_total_sales_volume"/>
+                        <field name="state"/>
+                    </group>
+                    <group>
+                        <button name="action_confirm_as_customer" type="object" string="Confirm as Customer" class="btn-primary"/>
+                    </group>
+                </sheet>
+                <notebook>
+                    <page string="Encounters">
+                        <field name="encounter_ids">
+                            <tree>
+                                <field name="encounter_type"/>
+                                <field name="date"/>
+                                <field name="user_id"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+</odoo>

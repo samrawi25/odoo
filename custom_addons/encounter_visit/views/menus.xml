@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Action for Visit Titles -->
+    <record id="action_visit_titles" model="ir.actions.act_window">
+        <field name="name">Visit Titles</field>
+        <field name="res_model">encounter.visit.title</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first visit title!
+            </p>
+            <p>
+                Visit titles are used to categorize and classify different types of encounter visits.
+                You can set titles like "Initial Contact", "Follow-up", "Product Demo", etc.
+            </p>
+        </field>
+    </record>
+    <!-- Encounter Menu root-->
+    <menuitem id="menu_encounter_visit_root"
+              name="Encounter Visits"
+              parent="crm.crm_menu_root" />
+
+    <menuitem id="menu_encounter_visit"
+              name="Visits"
+              parent="menu_encounter_visit_root"
+              action="action_encounter_visit"/>
+    <!-- Visit Titles Menu -->
+    <menuitem id="menu_visit_titles"
+              name="Visit Titles"
+              parent="menu_encounter_visit_root"
+              action="action_visit_titles"
+              sequence="10"/>
+
+
+</odoo>

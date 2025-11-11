@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_crm_tele_encounter_tree" model="ir.actions.act_window">
+        <field name="name">Encounters</field>
+        <field name="res_model">crm.tele_encounter</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_crm_tele_encounter_tree" model="ir.ui.view">
+        <field name="name">crm.tele.encounter.tree</field>
+        <field name="model">crm.tele_encounter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="encounter_type"/>
+                <field name="date"/>
+                <field name="user_id"/>
+                <field name="lead_id"/>
+                <field name="opportunity_id"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_crm_tele_encounter_form" model="ir.ui.view">
+        <field name="name">crm.tele.encounter.form</field>
+        <field name="model">crm.tele_encounter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="encounter_type"/>
+                        <field name="date"/>
+                        <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="lead_id"/>
+                        <field name="opportunity_id"/>
+                        <field name="partner_id"/>
+                    </group>
+                    <group>
+                        <field name="latitude"/>
+                        <field name="longitude"/>
+                    </group>
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

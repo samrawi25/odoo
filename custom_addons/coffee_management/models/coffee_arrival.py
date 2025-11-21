@@ -74,6 +74,14 @@ class CoffeeArrival(models.Model):
         ('done', 'Done'),
     ], string='Status', default='draft', tracking=True)
 
+    # Add security fields
+    quality_analyst_id = fields.Many2one(
+        'res.users',
+        string='Quality Analyst',
+        default=lambda self: self.env.user
+    )
+    create_uid = fields.Many2one('res.users', string='Created By', readonly=True)  # This should already exist
+
     def _get_product_name(self, coffee_origin, coffee_type, amg_grade):
         if not all([coffee_origin, coffee_type, amg_grade]):
             return False

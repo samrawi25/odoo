@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="62899b79-8678-407f-8567-016aaad326b8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/information_schema.FNRwLQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/public.abK9xQ.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/public.abK9xQ.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_order.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_order_line.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/security/coffee_access_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/security/coffee_record_rules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/security/coffee_security.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/coffee_order_views.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/static/src/img/icon.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/static/src/img/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/static/src/img/img_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/crm_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crm_project.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/data/coffee_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/data/coffee_data.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_arrival.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_arrival.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_classification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_line.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_quality.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_quality.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_stock_issue.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_stock_issue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_weight.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_weight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/mrp_production_extension.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/mrp_production_extension.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/report_coffee.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/report_coffee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/stock_picking_extension.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/stock_picking_extension.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/reports/coffee_report_templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/reports/coffee_report_templates.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/views/menuitems.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/menuitems.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/views/product_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/product_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/views/report_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/report_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_manual/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/__manifest__.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="35SfVBN3GK5xq9PQekd45OGeMgj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.odoo-bin.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/crm_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="odoo-bin" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="crm_project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.10 (crm_project)" />
+      <option name="WORKING_DIRECTORY" value="D:\crm_project" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/odoo-bin" />
+      <option name="PARAMETERS" value="-c crm.conf" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-PY-252.27397.106" />
+        <option value="bundled-python-sdk-4e2b1448bda8-9a97661f3031-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.27397.106" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62899b79-8678-407f-8567-016aaad326b8" name="Changes" comment="" />
+      <created>1763108417150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763108417150</updated>
+      <workItem from="1763108418435" duration="13826000" />
+      <workItem from="1763446420842" duration="3408000" />
+      <workItem from="1763659900123" duration="4716000" />
+      <workItem from="1763703492724" duration="2831000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/crm_project$odoo_bin.coverage" NAME="odoo-bin Coverage Results" MODIFIED="1763703898431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="D:\crm_project" />
+  </component>
+</project>

@@ -30,5 +30,16 @@
             <field name="company_id" eval="False"/>
         </record>
 
+        <odoo>
+            <data noupdate="1">
+                <record id="sequence_coffee_contract_order" model="ir.sequence">
+                    <field name="name">Coffee Contract Order Sequence</field>
+                    <field name="code">coffee.contract.order</field>
+                    <field name="prefix">CON-ORD-%(year)s-</field>
+                    <field name="padding">4</field>
+                </record>
+            </data>
+        </odoo>
+
     </data>
 </odoo>

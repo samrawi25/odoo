@@ -45,6 +45,13 @@ class CoffeeQualityEvaluation(models.Model):
         readonly=True
     )
 
+    # Add security fields
+    quality_analyst_id = fields.Many2one(
+        'res.users',
+        string='Quality Analyst',
+        default=lambda self: self.env.user
+    )
+
     @api.depends('primary_defect', 'secondary_defect', 'odour', 'cup_clean', 'acidity', 'body', 'flavor')
     def _compute_total_score(self):
         odour_defect_mapping = {
@@ -85,24 +92,40 @@ class CoffeeQualityEvaluation(models.Model):
                 record.amg_grade = False
 
     def _create_or_update_product(self):
-        for record in self:
-            if record.arrival_id.coffee_origin_ids and record.arrival_id.coffee_type_ids and record.amg_grade:
-                product_name = record.arrival_id._get_product_name(
-                    record.arrival_id.coffee_origin_ids,
-                    record.arrival_id.coffee_type_ids,
-                    record.amg_grade
-                )
+        """
+        Helper method to create or update the associated coffee product.
+        This is separated from the main workflow method for clarity.
+        When creating a new product, it is configured as a storable product
+        with a UOM of kg and assigned to the 'Raw Coffee' category.
+        """
+        self.ensure_one()
+        arrival = self.arrival_id
+        if arrival.coffee_origin_ids and arrival.coffee_type_ids and self.amg_grade:
+            product_name = arrival._get_product_name(
+                arrival.coffee_origin_ids,
+                arrival.coffee_type_ids,
+                self.amg_grade
+            )
 
-                if product_name:
-                    existing_product = self.env['product.product'].search([('name', '=', product_name)], limit=1)
-                    if existing_product:
-                        record.arrival_id.product_id = existing_product.id
-                    else:
-                        new_product = self.env['product.product'].create({
-                            'name': product_name,
-                            'is_coffee_product': True,
-                        })
-                        record.arrival_id.product_id = new_product.id
+            if product_name:
+                existing_product = self.env['product.product'].search([('name', '=', product_name)], limit=1)
+                if existing_product:
+                    arrival.product_id = existing_product.id
+                else:
+                    new_product_vals = {
+                        'name': product_name,
+                        'is_coffee_product': True,
+                        'type': 'product',  # 'product' corresponds to Storable Product
+                        'uom_id': self.env.ref('uom.product_uom_kgm').id,
+                    }
+
+                    # Search for the 'Raw Coffee' category and assign it if found
+                    raw_coffee_category = self.env['product.category'].search([('name', '=', 'Raw Coffee')], limit=1)
+                    if raw_coffee_category:
+                        new_product_vals['categ_id'] = raw_coffee_category.id
+
+                    new_product = self.env['product.product'].create(new_product_vals)
+                    arrival.product_id = new_product.id
 
     @api.constrains('amg_grade')
     def _check_amg_grade_for_downstream(self):

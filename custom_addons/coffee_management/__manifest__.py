@@ -1,7 +1,7 @@
 {
     "name": "Coffee Management",
     "version": "1.1.0",
-    "author": "Application Development Team",
+    "author": "AMG Business Application",
     "category": "Manufacturing/Manufacturing",
     "summary": "End-to-end Coffee Supply Chain Management.",
     "description": """
@@ -19,10 +19,13 @@ Automates arrivals, grading, weight management, contracts, manufacturing, and de
         "mail",
     ],
     "data": [
-        "security/ir.model.access.csv",
+        # "security/ir.model.access.csv",
+        "security/coffee_security.xml",
+        "security/coffee_access_rules.xml",
+        "security/coffee_record_rules.xml",
         "data/coffee_data.xml",
         "views/product_template_views.xml",
-        "views/product_views.xml",
+        # "views/product_views.xml",
         "views/coffee_arrival_views.xml",
         "views/coffee_quality_views.xml",
         "views/coffee_weight_views.xml",
@@ -30,6 +33,7 @@ Automates arrivals, grading, weight management, contracts, manufacturing, and de
         "views/coffee_stock_receiving_views.xml",
         "views/coffee_stock_issue_views.xml",
         "views/coffee_contract_views.xml",
+        "views/coffee_order_views.xml",
         "views/coffee_classification_views.xml",
         "views/coffee_location_views.xml",
         "views/ecx_coffee_products_views.xml",

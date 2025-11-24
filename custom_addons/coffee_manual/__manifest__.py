@@ -23,8 +23,9 @@
             "coffee_manual/static/src/css/manual.css",
             "coffee_manual/static/src/js/manual_scripts.js",  # <-- ADD THIS LINE
         ],
-    },    
+    },
     "installable": True,
     "application": False,
     "license": "LGPL-3",
+    'icon': 'coffee_manual\static\img\icon.gif',
 }

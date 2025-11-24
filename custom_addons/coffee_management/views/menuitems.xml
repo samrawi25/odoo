@@ -30,6 +30,18 @@
                   action="coffee_stock_issue_action"
                   sequence="30"/>
 
+        <!--<menuitem id="menu_mrp_production_coffee"
+                  name="Coffee Production Orders"
+                  parent="menu_coffee_operations"
+                  action="action_mrp_production_coffee_test"
+                  sequence="40"/>-->
+
+        <menuitem id="menu_coffee_contract_order"
+                  name="Contract Orders"
+                  parent="menu_coffee_operations"
+                  action="action_coffee_contract_order"
+                  sequence="40"/>
+
         <!-- CONTRACTS MENU AND SUBMENUS -->
         <menuitem id="menu_coffee_contract"
                   name="Contracts"

@@ -17,6 +17,9 @@ from . import coffee_classification
 from . import coffee_location
 from . import ecx_coffee
 from . import report_coffee
+from . import coffee_contract_order
+from . import coffee_contract_order_line
+# from . import coffee_production
 # from . import report_date_range_wizard
 
 

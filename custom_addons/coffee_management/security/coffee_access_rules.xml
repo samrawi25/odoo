@@ -1,0 +1,504 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<odoo>-->
+<!--    <data noupdate="1">-->
+<!--        &lt;!&ndash; Additional Access Rights for Remaining Models &ndash;&gt;-->
+
+<!--        &lt;!&ndash; Coffee Weight History Access &ndash;&gt;-->
+<!--        <record id="access_coffee_admin_weight_history" model="ir.model.access">-->
+<!--            <field name="name">Administrator Access for Weight History</field>-->
+<!--            <field name="model_id" ref="model_coffee_weight_history"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_admin"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="True"/>-->
+<!--        </record>-->
+
+<!--        <record id="access_coffee_quality_analyst_weight_history" model="ir.model.access">-->
+<!--            <field name="name">Quality Analyst Access for Weight History</field>-->
+<!--            <field name="model_id" ref="model_coffee_weight_history"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_quality_analyst"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="False"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Coffee Contract Order Access &ndash;&gt;-->
+<!--        <record id="access_coffee_admin_contract_order" model="ir.model.access">-->
+<!--            <field name="name">Administrator Access for Contract Order</field>-->
+<!--            <field name="model_id" ref="model_coffee_contract_order"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_admin"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="True"/>-->
+<!--        </record>-->
+
+<!--        <record id="access_coffee_contract_manager_contract_order" model="ir.model.access">-->
+<!--            <field name="name">Contract Manager Access for Contract Order</field>-->
+<!--            <field name="model_id" ref="model_coffee_contract_order"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_contract_manager"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="False"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Coffee Stock Issue Access &ndash;&gt;-->
+<!--        <record id="access_coffee_admin_stock_issue" model="ir.model.access">-->
+<!--            <field name="name">Administrator Access for Stock Issue</field>-->
+<!--            <field name="model_id" ref="model_coffee_stock_issue"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_admin"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="True"/>-->
+<!--        </record>-->
+
+<!--        <record id="access_coffee_stock_manager_stock_issue" model="ir.model.access">-->
+<!--            <field name="name">Stock Manager Access for Stock Issue</field>-->
+<!--            <field name="model_id" ref="model_coffee_stock_issue"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_stock_manager"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="False"/>-->
+<!--        </record>-->
+
+<!--        &lt;!&ndash; Master Data Models Access &ndash;&gt;-->
+<!--        <record id="access_coffee_admin_coffee_origin" model="ir.model.access">-->
+<!--            <field name="name">Administrator Access for Coffee Origin</field>-->
+<!--            <field name="model_id" ref="model_coffee_origin"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_admin"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="True"/>-->
+<!--        </record>-->
+
+<!--        <record id="access_coffee_admin_coffee_grade" model="ir.model.access">-->
+<!--            <field name="name">Administrator Access for Coffee Grade</field>-->
+<!--            <field name="model_id" ref="model_coffee_grade"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_admin"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="True"/>-->
+<!--        </record>-->
+
+<!--        <record id="access_coffee_admin_ecx_coffee" model="ir.model.access">-->
+<!--            <field name="name">Administrator Access for ECX Coffee</field>-->
+<!--            <field name="model_id" ref="model_ecx_coffee"/>-->
+<!--            <field name="group_id" ref="coffee_management.group_coffee_admin"/>-->
+<!--            <field name="perm_read" eval="True"/>-->
+<!--            <field name="perm_write" eval="True"/>-->
+<!--            <field name="perm_create" eval="True"/>-->
+<!--            <field name="perm_unlink" eval="True"/>-->
+<!--        </record>-->
+
+<!--    </data>-->
+<!--</odoo>-->
+
+
+<odoo>
+    <data noupdate="1">
+        <!-- ================ -->
+        <!-- 1. COFFEE ARRIVAL ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Administrator Access for Coffee Arrival -->
+        <record id="access_coffee_admin_arrival" model="ir.model.access">
+            <field name="name">Administrator Access for Coffee Arrival</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Quality Manager Access for Coffee Arrival -->
+        <record id="access_coffee_quality_manager_arrival" model="ir.model.access">
+            <field name="name">Quality Manager Access for Coffee Arrival</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="group_id" ref="coffee_management.group_coffee_quality_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Quality Analyst Access for Coffee Arrival -->
+        <record id="access_coffee_quality_analyst_arrival" model="ir.model.access">
+            <field name="name">Quality Analyst Access for Coffee Arrival</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="group_id" ref="coffee_management.group_coffee_quality_analyst"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Contract Manager Access for Coffee Arrival -->
+        <record id="access_coffee_contract_manager_arrival" model="ir.model.access">
+            <field name="name">Contract Manager Access for Coffee Arrival</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="group_id" ref="coffee_management.group_coffee_contract_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Stock Manager Access for Coffee Arrival -->
+        <record id="access_coffee_stock_manager_arrival" model="ir.model.access">
+            <field name="name">Stock Manager Access for Coffee Arrival</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="group_id" ref="coffee_management.group_coffee_stock_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Viewer Access for Coffee Arrival -->
+        <record id="access_coffee_viewer_arrival" model="ir.model.access">
+            <field name="name">Viewer Access for Coffee Arrival</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="group_id" ref="coffee_management.group_coffee_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ================ -->
+        <!-- 2. COFFEE QUALITY EVALUATION ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Administrator Access for Quality Evaluation -->
+        <record id="access_coffee_admin_quality_evaluation" model="ir.model.access">
+            <field name="name">Administrator Access for Quality Evaluation</field>
+            <field name="model_id" ref="model_coffee_quality_evaluation"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Quality Manager Access for Quality Evaluation -->
+        <record id="access_coffee_quality_manager_quality_evaluation" model="ir.model.access">
+            <field name="name">Quality Manager Access for Quality Evaluation</field>
+            <field name="model_id" ref="model_coffee_quality_evaluation"/>
+            <field name="group_id" ref="coffee_management.group_coffee_quality_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Quality Analyst Access for Quality Evaluation -->
+        <record id="access_coffee_quality_analyst_quality_evaluation" model="ir.model.access">
+            <field name="name">Quality Analyst Access for Quality Evaluation</field>
+            <field name="model_id" ref="model_coffee_quality_evaluation"/>
+            <field name="group_id" ref="coffee_management.group_coffee_quality_analyst"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ================ -->
+        <!-- 3. COFFEE WEIGHT HISTORY ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Administrator Access for Weight History -->
+        <record id="access_coffee_admin_weight_history" model="ir.model.access">
+            <field name="name">Administrator Access for Weight History</field>
+            <field name="model_id" ref="model_coffee_weight_history"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Quality Analyst Access for Weight History -->
+        <record id="access_coffee_quality_analyst_weight_history" model="ir.model.access">
+            <field name="name">Quality Analyst Access for Weight History</field>
+            <field name="model_id" ref="model_coffee_weight_history"/>
+            <field name="group_id" ref="coffee_management.group_coffee_quality_analyst"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ================ -->
+        <!-- 4. COFFEE CONTRACT ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Administrator Access for Coffee Contract -->
+        <record id="access_coffee_admin_contract" model="ir.model.access">
+            <field name="name">Administrator Access for Coffee Contract</field>
+            <field name="model_id" ref="model_coffee_contract"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Contract Manager Access for Coffee Contract -->
+        <record id="access_coffee_contract_manager_contract" model="ir.model.access">
+            <field name="name">Contract Manager Access for Coffee Contract</field>
+            <field name="model_id" ref="model_coffee_contract"/>
+            <field name="group_id" ref="coffee_management.group_coffee_contract_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Contract Team Access for Coffee Contract -->
+        <record id="access_coffee_contract_team_contract" model="ir.model.access">
+            <field name="name">Contract Team Access for Coffee Contract</field>
+            <field name="model_id" ref="model_coffee_contract"/>
+            <field name="group_id" ref="coffee_management.group_coffee_contract_team"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ================ -->
+        <!-- 5. COFFEE CONTRACT ORDER ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Administrator Access for Contract Order -->
+        <record id="access_coffee_admin_contract_order" model="ir.model.access">
+            <field name="name">Administrator Access for Contract Order</field>
+            <field name="model_id" ref="model_coffee_contract_order"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Contract Manager Access for Contract Order -->
+        <record id="access_coffee_contract_manager_contract_order" model="ir.model.access">
+            <field name="name">Contract Manager Access for Contract Order</field>
+            <field name="model_id" ref="model_coffee_contract_order"/>
+            <field name="group_id" ref="coffee_management.group_coffee_contract_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ================ -->
+        <!-- 6. COFFEE STOCK ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Administrator Access for Stock Receiving -->
+        <record id="access_coffee_admin_stock_receiving" model="ir.model.access">
+            <field name="name">Administrator Access for Stock Receiving</field>
+            <field name="model_id" ref="model_coffee_stock_receiving"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Stock Manager Access for Stock Receiving -->
+        <record id="access_coffee_stock_manager_stock_receiving" model="ir.model.access">
+            <field name="name">Stock Manager Access for Stock Receiving</field>
+            <field name="model_id" ref="model_coffee_stock_receiving"/>
+            <field name="group_id" ref="coffee_management.group_coffee_stock_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Stock Team Access for Stock Receiving -->
+        <record id="access_coffee_stock_team_stock_receiving" model="ir.model.access">
+            <field name="name">Stock Team Access for Stock Receiving</field>
+            <field name="model_id" ref="model_coffee_stock_receiving"/>
+            <field name="group_id" ref="coffee_management.group_coffee_stock_team"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Administrator Access for Stock Issue -->
+        <record id="access_coffee_admin_stock_issue" model="ir.model.access">
+            <field name="name">Administrator Access for Stock Issue</field>
+            <field name="model_id" ref="model_coffee_stock_issue"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Stock Manager Access for Stock Issue -->
+        <record id="access_coffee_stock_manager_stock_issue" model="ir.model.access">
+            <field name="name">Stock Manager Access for Stock Issue</field>
+            <field name="model_id" ref="model_coffee_stock_issue"/>
+            <field name="group_id" ref="coffee_management.group_coffee_stock_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ================ -->
+        <!-- 7. MASTER DATA ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Administrator Access for Master Data -->
+        <record id="access_coffee_admin_master_data" model="ir.model.access">
+            <field name="name">Administrator Access for Master Data</field>
+            <field name="model_id" ref="model_coffee_type"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_coffee_admin_coffee_origin" model="ir.model.access">
+            <field name="name">Administrator Access for Coffee Origin</field>
+            <field name="model_id" ref="model_coffee_origin"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_coffee_admin_coffee_grade" model="ir.model.access">
+            <field name="name">Administrator Access for Coffee Grade</field>
+            <field name="model_id" ref="model_coffee_grade"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_coffee_admin_ecx_coffee" model="ir.model.access">
+            <field name="name">Administrator Access for ECX Coffee</field>
+            <field name="model_id" ref="model_ecx_coffee"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Read-only Access for Master Data for other groups -->
+        <record id="access_coffee_viewer_master_data" model="ir.model.access">
+            <field name="name">Viewer Access for Master Data</field>
+            <field name="model_id" ref="model_coffee_type"/>
+            <field name="group_id" ref="coffee_management.group_coffee_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- ================ -->
+        <!-- 8. REPORT ACCESS RIGHTS -->
+        <!-- ================ -->
+
+        <!-- Report Wizard Access -->
+        <record id="access_coffee_admin_report_wizard" model="ir.model.access">
+            <field name="name">Administrator Access for Report Wizard</field>
+            <field name="model_id" ref="model_report_date_range_wizard"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_coffee_report_manager_wizard" model="ir.model.access">
+            <field name="name">Report Manager Access for Report Wizard</field>
+            <field name="model_id" ref="model_report_date_range_wizard"/>
+            <field name="group_id" ref="coffee_management.group_coffee_report_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="access_coffee_report_viewer_wizard" model="ir.model.access">
+            <field name="name">Report Viewer Access for Report Wizard</field>
+            <field name="model_id" ref="model_report_date_range_wizard"/>
+            <field name="group_id" ref="coffee_management.group_coffee_report_viewer"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Report Abstract Models Access (Read-only for all authorized users) -->
+        <record id="access_coffee_admin_arrival_report" model="ir.model.access">
+            <field name="name">Administrator Access for Arrival Report</field>
+            <field name="model_id" ref="model_report_coffee_arrival_quality"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="access_coffee_report_manager_arrival_report" model="ir.model.access">
+            <field name="name">Report Manager Access for Arrival Report</field>
+            <field name="model_id" ref="model_report_coffee_arrival_quality"/>
+            <field name="group_id" ref="coffee_management.group_coffee_report_manager"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="access_coffee_admin_stock_report" model="ir.model.access">
+            <field name="name">Administrator Access for Stock Report</field>
+            <field name="model_id" ref="model_report_coffee_stock_movement"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="access_coffee_admin_contract_report" model="ir.model.access">
+            <field name="name">Administrator Access for Contract Report</field>
+            <field name="model_id" ref="model_report_coffee_contract_fulfillment"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="access_coffee_admin_manufacturing_report" model="ir.model.access">
+            <field name="name">Administrator Access for Manufacturing Report</field>
+            <field name="model_id" ref="model_report_coffee_manufacturing_production"/>
+            <field name="group_id" ref="coffee_management.group_coffee_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

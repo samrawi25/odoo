@@ -11,9 +11,20 @@ class CoffeeType(models.Model):
     description = fields.Text(string='Description')
     is_default = fields.Boolean(string='Is Default Type')
 
-    _sql_constraints = [
+    '''_sql_constraints = [
         ('unique_coffee_type_name', 'unique(name)', 'Coffee Type name must be unique!'),
-    ]
+    ]'''
+
+    @api.constrains('name')
+    def _check_unique_name_case_insensitive(self):
+        for record in self:
+            if record.name:
+                existing = self.search([
+                    ('id', '!=', record.id),
+                    ('name', 'ilike', record.name)
+                ], limit=1)
+                if existing:
+                    raise ValidationError("Coffee Type name must be unique (case-insensitive)!")
 
     @api.constrains('is_default')
     def _check_unique_default(self):
@@ -41,7 +52,7 @@ class CoffeeOrigin(models.Model):
     def _check_unique_origin_name(self):
         for record in self:
             existing = self.search([
-                ('name', '=', record.name),
+                ('name', 'ilike', record.name),
                 ('id', '!=', record.id)
             ], limit=1)
             if existing:
@@ -57,5 +68,16 @@ class CoffeeGrade(models.Model):
     # coffee_origin_id = fields.Many2one('coffee.origin', string='Origin', required=True)
     description = fields.Text(string='Description')
     grade_code = fields.Char(string='ECX Grade Code', help='Unique code for the grade')
+
+    @api.constrains('name')
+    def _check_unique_name_case_insensitive(self):
+        for record in self:
+            if record.name:
+                existing = self.search([
+                    ('id', '!=', record.id),
+                    ('name', 'ilike', record.name)
+                ], limit=1)
+                if existing:
+                    raise ValidationError("Coffee Grade name must be unique (case-insensitive).")
 
 

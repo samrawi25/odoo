@@ -161,7 +161,6 @@ class CoffeeWeightHistory(models.Model):
             )
             raise
 
-
     @api.model_create_multi
     def create(self, vals_list):
         # Call the original create method to create the weight history records

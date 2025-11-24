@@ -60,11 +60,7 @@ class CoffeeStockIssue(models.Model):
             if record.issued_bags <= 0 or record.issued_kg <= 0:
                 raise ValidationError(_("Issued Bags and KG must be greater than zero."))
 
-    # === THE OBSOLETE ONCHANGE METHOD BELOW HAS BEEN REMOVED ===
-    # It was causing the error because it referenced deleted models.
-    # @api.onchange('receiving_no_id')
-    # def _onchange_receiving_no_id(self):
-    #     pass
+
 
     def action_issue_stock(self):
         self.ensure_one()
@@ -105,8 +101,7 @@ class CoffeeStockIssue(models.Model):
 
         picking.action_confirm()
 
-        # In Odoo 17, 'quantity' is the correct field name for 'quantity' on stock.move.line
-        # Some versions might still use quantity, but 'quantity' is preferred.
+
         if hasattr(stock_move.move_line_ids, 'quantity'):
             stock_move.move_line_ids.write({'quantity': self.issued_kg})
         else:

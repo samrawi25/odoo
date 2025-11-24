@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-     <!-- reports/coffee_report_templates.xml -->
-     <!-- reports/coffee_report_templates.xml -->
 
     <template id="report_coffee_contract_document">
         <t t-call="web.html_container">

@@ -16,7 +16,7 @@
             </field>
         </record>
 
-        <!-- Product Tree View -->
+        <!-- Product Tree View
         <record id="product_product_view_tree_coffee" model="ir.ui.view">
             <field name="name">product.product.tree.coffee</field>
             <field name="model">product.product</field>
@@ -26,6 +26,6 @@
                     <field name="amg_grade"/>
                 </xpath>
             </field>
-        </record>
+        </record>-->
     </data>
 </odoo>

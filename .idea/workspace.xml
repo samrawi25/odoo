@@ -5,49 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62899b79-8678-407f-8567-016aaad326b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/89b0a39d-0ea9-4831-a3a2-ec648095462d/storage_v2/_src_/database/crm.3oEBAA/schema/public.abK9xQ.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_order.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_order_line.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/security/coffee_access_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/security/coffee_record_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/security/coffee_security.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/coffee_order_views.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/static/src/img/icon.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/static/src/img/img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/static/src/img/img_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/crm_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/crm_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/data_source_mapping.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/data_source_mapping.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/__manifest__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/data/coffee_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/data/coffee_data.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_arrival.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_arrival.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_classification.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_classification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_line.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_contract_line.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_quality.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_quality.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_stock_issue.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_stock_issue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_weight.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/coffee_weight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/mrp_production_extension.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/mrp_production_extension.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/report_coffee.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/report_coffee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/models/stock_picking_extension.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/models/stock_picking_extension.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/reports/coffee_report_templates.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/reports/coffee_report_templates.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/views/menuitems.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/menuitems.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/views/product_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/product_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_management/views/report_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_management/views/report_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/custom_addons/coffee_manual/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/custom_addons/coffee_manual/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +98,7 @@
       <workItem from="1763108418435" duration="13826000" />
       <workItem from="1763446420842" duration="3408000" />
       <workItem from="1763659900123" duration="4716000" />
-      <workItem from="1763703492724" duration="2831000" />
+      <workItem from="1763703492724" duration="5697000" />
     </task>
     <servers />
   </component>

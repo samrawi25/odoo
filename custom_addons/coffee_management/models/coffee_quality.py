@@ -1,6 +1,9 @@
 # In coffee.quality.evaluation model
+from itertools import product
+
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError, UserError
+from odoo.release import product_name
 
 
 class CoffeeQualityEvaluation(models.Model):
@@ -30,13 +33,9 @@ class CoffeeQualityEvaluation(models.Model):
 
     total_score = fields.Float(string='Total Score (%)', compute='_compute_total_score', store=True)
     amg_grade = fields.Selection([
-        ('UG', 'UG'),
-        ('G5', 'G5'),
-        ('G4', 'G4'),
-        ('G3', 'G3'),
-        ('G2', 'G2'),
-        ('G1', 'G1'),
-    ], string='AMG Grade', compute='_compute_amg_grade', store=True)
+        ('UG', 'UG'), ('G5', 'G5'), ('G4', 'G4'),
+        ('G3', 'G3'), ('G2', 'G2'), ('G1', 'G1'),
+    ], string='AMG Grade', compute='_compute_amg_grade', store=True, tracking=True)
 
     arrival_date = fields.Date(
         string='Arrival Date',
@@ -90,6 +89,40 @@ class CoffeeQualityEvaluation(models.Model):
                 record.amg_grade = 'G1'
             else:
                 record.amg_grade = False
+    def button_confirm_quality(self):
+        self.ensure_one()
+        if self.amg_grade=='UG':
+            self.arrival_id.state = 'rejected'
+            raise UserError(_("AMG Grade is 'UG'(Rejected). The arrival can not be processed."))
+        product=self._create_or_find_product()
+        self.arrival_id.write({
+            'product_id': product.id,
+            'state': 'quality_evaluated'
+        })
+        return {
+            'type': 'ir.actions.act_window_close'
+        }
+    def _create_or_find_product(self):
+        self.ensure_one()
+        arrival = self.arrival_id
+        if not all([arrival.ecx_coffee_name_id, self.amg_grade]):
+            raise UserError(_("ECX Coffee classification and AMG Grade must be set to create a product."))
+        product_name=f"{arrival.ecx_coffee_name_id.ecx_coffee_name}-{self.amg_grade}"
+        product=self.env([('name', '=', product_name)], limit=1)
+        if not product:
+            raw_coffee_category=self.env.ref('product.product_category_all',
+                                             raise_if_not_found=False) # Fallback to 'All'
+            coffee_cat=self.env['product.category'].search([('name', '=', raw_coffee_category)], limit=1)
+            if coffee_cat:
+                raw_coffee_category=coffee_cat
+            product=product.create({
+                'name': product_name,
+                'detailed_type': 'product', # Storable product
+                'category_id': raw_coffee_category.id,
+                'amg_grade': self.amg_grade,
+                'list_price': 0.0, # Raw material cost will be set on the receipt
+            })
+        return product
 
     def _create_or_update_product(self):
         """

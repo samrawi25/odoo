@@ -1,6 +1,4 @@
 from odoo import fields, models, api
-# from odoo.exceptions import ValidationError, UserError
-
 
 class CoffeeArrival(models.Model):
     _name = 'coffee.arrival'
@@ -71,7 +69,7 @@ class CoffeeArrival(models.Model):
         ('quality_evaluated', 'Quality Evaluated'),
         ('weight_recorded', 'Weight Recorded'),
         ('ug_grade', 'UG Grade - Rejected'),
-        ('done', 'Done'),
+        ('done', 'Received in Stock'),
     ], string='Status', default='draft', tracking=True)
 
     # Add security fields
@@ -102,49 +100,60 @@ class CoffeeArrival(models.Model):
     def action_evaluate_quality(self):
         self.ensure_one()
         if not self.quality_evaluation_id:
-            quality_evaluation = self.env['coffee.quality.evaluation'].create({
-                'arrival_id': self.id,
-                'moisture_content': 0.0,
-                'screen_percentage': 0.0,
-                'primary_defect': 0.0,
-                'secondary_defect': 0.0,
-                'odour': 'clean',
-                'cup_clean': 0.0,
-                'acidity': 0.0,
-                'body': 0.0,
-                'flavor': 0.0,
-            })
-            self.quality_evaluation_id = quality_evaluation.id
-            if self.state not in ('ug_grade', 'done'):
-                self.state = 'quality_evaluated'
+            self.quality_evaluation_id = self.env['coffee.quality.evaluation'].create({'arrival_id': self.id})
+        return {'type': 'ir.actions.act_window',
+                'name': 'Quality Evaluation',
+                'res_model': 'coffee.quality.evaluation',
+                'res_id': self.quality_evaluation_id.id,
+                'view_mode': 'form',
+                'target': 'new',
+                'context': {
+                    'default_arrival_id': self.id,
+                    'reload_parent': True,
+                    'form_view_ref': 'coffee_system.coffee_quality_evaluation_view_form',
 
-        return {
-            'type': 'ir.actions.act_window',
-            'name': 'Quality Evaluation',
-            'res_model': 'coffee.quality.evaluation',
-            'res_id': self.quality_evaluation_id.id,
-            'view_mode': 'form',
-            'target': 'new',
-            'context': {
-                'default_arrival_id': self.id,
-                'reload_parent': True,
-                'form_view_ref': 'coffee_system.coffee_quality_evaluation_view_form',
-            },
-        }
+                }
+                }
+            #     'moisture_content': 0.0,
+            #     'screen_percentage': 0.0,
+            #     'primary_defect': 0.0,
+            #     'secondary_defect': 0.0,
+            #     'odour': 'clean',
+            #     'cup_clean': 0.0,
+            #     'acidity': 0.0,
+            #     'body': 0.0,
+            #     'flavor': 0.0,
+            # })
+        #     self.quality_evaluation_id = quality_evaluation.id
+        #     if self.state not in ('ug_grade', 'done'):
+        #         self.state = 'quality_evaluated'
+        #
+        # return {
+        #     'type': 'ir.actions.act_window',
+        #     'name': 'Quality Evaluation',
+        #     'res_model': 'coffee.quality.evaluation',
+        #     'res_id': self.quality_evaluation_id.id,
+        #     'view_mode': 'form',
+        #     'target': 'new',
+        #     'context': {
+        #         'default_arrival_id': self.id,
+        #         'reload_parent': True,
+        #         'form_view_ref': 'coffee_system.coffee_quality_evaluation_view_form',
+        #     },
+        # }
 
     def action_record_weight(self):
         self.ensure_one()
         if not self.weight_history_id:
-            weight_history = self.env['coffee.weight.history'].create({
-                'arrival_id': self.id,
-                'num_of_bags': 0,
-                'gross_weight': 0.0,
-                'truck_weight': 0.0,
-                'damage_percentage': 0.0,
-                'empty_jute_bag_weight': 0.0,
-                'moisture_loss_adjustment': 0.0,
-            })
-            self.weight_history_id = weight_history.id
+            self.weight_history_id = self.env['coffee.weight.history'].create({'arrival_id': self.id})
+            #     'num_of_bags': 0,
+            #     'gross_weight': 0.0,
+            #     'truck_weight': 0.0,
+            #     'damage_percentage': 0.0,
+            #     'empty_jute_bag_weight': 0.0,
+            #     'moisture_loss_adjustment': 0.0,
+            # })
+            # self.weight_history_id = weight_history.id
         return {
             'type': 'ir.actions.act_window',
             'name': 'Weight History',

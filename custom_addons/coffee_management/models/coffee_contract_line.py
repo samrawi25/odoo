@@ -10,9 +10,12 @@ class CoffeeContractLine(models.Model):
         'coffee.contract', string='Contract', required=True, ondelete='cascade', index=True
     )
     product_id = fields.Many2one(
-        'product.product', string='Product', required=True,
-        domain="[('categ_id.name', '=', 'Processed Coffee')]"
+        'product.template',
+        string='Product',
+        required=True,
+        domain="[('is_coffee_product', '=', True)]"
     )
+
     name = fields.Char(string='Description')
     quantity_tons = fields.Float(
         string='Quantity (Tons)', required=True, digits='Product Unit of Measure'

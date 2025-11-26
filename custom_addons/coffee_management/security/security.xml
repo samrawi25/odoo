@@ -1,22 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <!--
-            Security Groups for Coffee Management
-        -->
-
-        <!-- Main Roles -->
-        <record id="group_coffee_user" model="res.groups">
-            <field name="name">Coffee User</field>
-            <field name="category_id" ref="base.module_category_manufacturing"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    <data noupdate="1">
+        <!-- ========================================== -->
+        <!-- 1. APPLICATION CATEGORY DEFINITION -->
+        <!-- ========================================== -->
+        <record id="module_category_coffee_management" model="ir.module.category">
+            <field name="name">Coffee Management</field>
+            <field name="description">User access levels for the Coffee Management System.</field>
+            <field name="sequence">30</field>
         </record>
 
+        <!-- ========================================== -->
+        <!-- 2. SECURITY GROUPS (ROLES) -->
+        <!-- ========================================== -->
+
+        <!-- Base User/Viewer Role -->
+        <record id="group_coffee_viewer" model="res.groups">
+            <field name="name">Viewer</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Users with read-only access to all coffee records.</field>
+        </record>
+
+        <!-- Operational Roles -->
+        <record id="group_coffee_quality_analyst" model="res.groups">
+            <field name="name">Quality Analyst</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_viewer'))]"/>
+            <field name="comment">Users who perform quality evaluations on coffee arrivals.</field>
+        </record>
+
+        <record id="group_coffee_stock_user" model="res.groups">
+            <field name="name">Stock / Warehouse User</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_viewer'))]"/>
+            <field name="comment">Users responsible for receiving and issuing stock.</field>
+        </record>
+
+        <record id="group_coffee_contract_user" model="res.groups">
+            <field name="name">Contract User</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_viewer'))]"/>
+            <field name="comment">Users who manage sales contracts and contract orders.</field>
+        </record>
+
+        <!-- Additional Specialized Groups -->
+        <record id="group_coffee_quality_manager" model="res.groups">
+            <field name="name">Quality Manager</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_quality_analyst'))]"/>
+            <field name="comment">Managers who oversee quality operations and approvals.</field>
+        </record>
+
+        <record id="group_coffee_contract_manager" model="res.groups">
+            <field name="name">Contract Manager</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_contract_user'))]"/>
+            <field name="comment">Managers who oversee contract operations and approvals.</field>
+        </record>
+
+        <record id="group_coffee_stock_manager" model="res.groups">
+            <field name="name">Stock Manager</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_stock_user'))]"/>
+            <field name="comment">Managers who oversee stock operations and approvals.</field>
+        </record>
+
+        <!-- Managerial Roles -->
         <record id="group_coffee_manager" model="res.groups">
-            <field name="name">Coffee Manager</field>
-            <field name="category_id" ref="base.module_category_manufacturing"/>
-            <!-- Use a LOCAL reference because group_coffee_user is in the same file -->
-            <field name="implied_ids" eval="[(4, ref('group_coffee_user'))]"/>
+            <field name="name">Manager</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[
+                (4, ref('group_coffee_quality_analyst')),
+                (4, ref('group_coffee_stock_user')),
+                (4, ref('group_coffee_contract_user')),
+                (4, ref('group_coffee_quality_manager')),
+                (4, ref('group_coffee_contract_manager')),
+                (4, ref('group_coffee_stock_manager'))
+            ]"/>
+            <field name="comment">Managers who can oversee all operations and approve steps.</field>
+        </record>
+
+        <!-- Admin Role (Full Access) -->
+        <record id="group_coffee_admin" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_manager'))]"/>
+            <field name="comment">Administrators with full control over configuration and all records.</field>
+        </record>
+
+        <!-- Report Groups -->
+        <record id="group_coffee_report_viewer" model="res.groups">
+            <field name="name">Report Viewer</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="comment">Can view and generate all coffee reports, but cannot configure them.</field>
+        </record>
+
+        <record id="group_coffee_report_manager" model="res.groups">
+            <field name="name">Report Manager</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+            <field name="implied_ids" eval="[(4, ref('group_coffee_report_viewer'))]"/>
+            <field name="comment">Can create, edit, and manage report configurations.</field>
+        </record>
+
+        <!-- Workflow Groups -->
+        <record id="group_coffee_quality_check" model="res.groups">
+            <field name="name">Can Check Coffee Quality</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <record id="group_coffee_quality_approve" model="res.groups">
+            <field name="name">Can Approve Coffee Quality</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <record id="group_coffee_contract_confirm" model="res.groups">
+            <field name="name">Can Confirm Coffee Contracts</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <record id="group_coffee_contract_approve" model="res.groups">
+            <field name="name">Can Approve Coffee Contracts</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <record id="group_coffee_stock_receive" model="res.groups">
+            <field name="name">Can Receive Coffee Stock</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <record id="group_coffee_stock_issue" model="res.groups">
+            <field name="name">Can Issue Coffee Stock</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <record id="group_coffee_location_manager" model="res.groups">
+            <field name="name">Coffee Location Manager</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <record id="group_coffee_manufacturing_manager" model="res.groups">
+            <field name="name">Coffee Manufacturing Manager</field>
+            <field name="category_id" ref="module_category_coffee_management"/>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- 3. MODEL REGISTRATIONS -->
+        <!-- ========================================== -->
+
+        <!-- Coffee Arrival Models -->
+        <record id="model_coffee_arrival" model="ir.model">
+            <field name="name">Coffee Arrival</field>
+            <field name="model">coffee.arrival</field>
+        </record>
+
+        <record id="model_coffee_quality_evaluation" model="ir.model">
+            <field name="name">Coffee Quality Evaluation</field>
+            <field name="model">coffee.quality.evaluation</field>
+        </record>
+
+        <record id="model_coffee_weight_history" model="ir.model">
+            <field name="name">Coffee Weight History</field>
+            <field name="model">coffee.weight.history</field>
+        </record>
+
+        <!-- Coffee Contract Models -->
+        <record id="model_coffee_contract" model="ir.model">
+            <field name="name">Coffee Contract</field>
+            <field name="model">coffee.contract</field>
+        </record>
+
+        <record id="model_coffee_contract_order" model="ir.model">
+            <field name="name">Coffee Contract Order</field>
+            <field name="model">coffee.contract.order</field>
+        </record>
+
+        <record id="model_coffee_contract_line" model="ir.model">
+            <field name="name">Coffee Contract Line</field>
+            <field name="model">coffee.contract.line</field>
+        </record>
+
+        <record id="model_coffee_contract_order_line" model="ir.model">
+            <field name="name">Coffee Contract Order Line</field>
+            <field name="model">coffee.contract.order.line</field>
+        </record>
+
+        <!-- Coffee Stock Models -->
+        <record id="model_coffee_stock_receiving" model="ir.model">
+            <field name="name">Coffee Stock Receiving</field>
+            <field name="model">coffee.stock.receiving</field>
+        </record>
+
+        <record id="model_coffee_stock_issue" model="ir.model">
+            <field name="name">Coffee Stock Issue</field>
+            <field name="model">coffee.stock.issue</field>
+        </record>
+
+        <!-- Master Data Models -->
+        <record id="model_coffee_type" model="ir.model">
+            <field name="name">Coffee Type</field>
+            <field name="model">coffee.type</field>
+        </record>
+
+        <record id="model_coffee_origin" model="ir.model">
+            <field name="name">Coffee Origin</field>
+            <field name="model">coffee.origin</field>
+        </record>
+
+        <record id="model_coffee_grade" model="ir.model">
+            <field name="name">Coffee Grade</field>
+            <field name="model">coffee.grade</field>
+        </record>
+
+        <record id="model_coffee_zone" model="ir.model">
+            <field name="name">Coffee Zone</field>
+            <field name="model">coffee.zone</field>
+        </record>
+
+        <record id="model_coffee_woreda" model="ir.model">
+            <field name="name">Coffee Woreda</field>
+            <field name="model">coffee.woreda</field>
+        </record>
+
+        <record id="model_ecx_coffee" model="ir.model">
+            <field name="name">ECX Coffee</field>
+            <field name="model">ecx.coffee</field>
+        </record>
+
+        <!-- Report Models -->
+        <record id="model_report_date_range_wizard" model="ir.model">
+            <field name="name">Report Date Range Wizard</field>
+            <field name="model">report.date.range.wizard</field>
+        </record>
+
+        <record id="model_report_coffee_arrival_quality" model="ir.model">
+            <field name="name">Coffee Arrival Quality Report</field>
+            <field name="model">report.coffee.arrival_quality</field>
+        </record>
+
+        <record id="model_report_coffee_stock_movement" model="ir.model">
+            <field name="name">Coffee Stock Movement Report</field>
+            <field name="model">report.coffee.stock_movement</field>
+        </record>
+
+        <record id="model_report_coffee_contract_fulfillment" model="ir.model">
+            <field name="name">Coffee Contract Fulfillment Report</field>
+            <field name="model">report.coffee.contract_fulfillment</field>
+        </record>
+
+        <record id="model_report_coffee_manufacturing_production" model="ir.model">
+            <field name="name">Coffee Manufacturing Production Report</field>
+            <field name="model">report.coffee.manufacturing_production</field>
+        </record>
+
+        <!-- ========================================== -->
+        <!-- 4. RECORD RULES (Data Visibility) -->
+        <!-- ========================================== -->
+
+        <!-- Admin: Full Access to All Records -->
+        <record id="rule_coffee_admin_all" model="ir.rule">
+            <field name="name">Coffee Admin: Full Access</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_admin'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Rule: Quality Analysts can only read/write their OWN quality evaluations -->
+        <record id="rule_quality_evaluation_analyst_own" model="ir.rule">
+            <field name="name">Quality Analyst: Own Evaluations Only</field>
+            <field name="model_id" ref="model_coffee_quality_evaluation"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_quality_analyst'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Rule: Managers can see all records in their functional area -->
+        <record id="rule_manager_all_access" model="ir.rule">
+            <field name="name">Coffee Manager: Full Read Access</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_manager'))]"/>
+        </record>
+
+        <!-- Contract User: Own Contracts -->
+        <record id="rule_contract_user_own_contracts" model="ir.rule">
+            <field name="name">Contract User: Own Contracts</field>
+            <field name="model_id" ref="model_coffee_contract"/>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_contract_user'))]"/>
+        </record>
+
+        <!-- Viewer: Read-only access to all coffee models -->
+        <record id="rule_coffee_viewer_readonly" model="ir.rule">
+            <field name="name">Viewer: Read Only Access</field>
+            <field name="model_id" ref="model_coffee_arrival"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_viewer'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Report Viewer: Can only access reports (read-only) -->
+        <record id="rule_coffee_report_viewer" model="ir.rule">
+            <field name="name">Report Viewer: Read Only Access</field>
+            <field name="model_id" ref="model_report_date_range_wizard"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_report_viewer'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- Additional rules for specialized teams -->
+        <record id="rule_coffee_contract_team_view" model="ir.rule">
+            <field name="name">Contract Team: View All Contracts</field>
+            <field name="model_id" ref="model_coffee_contract"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_contract_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="rule_coffee_stock_team_view" model="ir.rule">
+            <field name="name">Stock Team: View All Stock</field>
+            <field name="model_id" ref="model_coffee_stock_receiving"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_coffee_stock_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
         </record>
 
     </data>

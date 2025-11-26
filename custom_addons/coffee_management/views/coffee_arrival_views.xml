@@ -21,21 +21,35 @@
                 </tree>
             </field>
         </record>
-
-        <record id="coffee_arrival_view_form" model="ir.ui.view">
+        <record id="view_coffee_arrival_form" model="ir.ui.view">
             <field name="name">coffee.arrival.form</field>
             <field name="model">coffee.arrival</field>
             <field name="arch" type="xml">
-                <form string="Coffee Arrival">
+                <form>
                     <header>
-                        <button name="action_evaluate_quality" string="Evaluate Quality" type="object"
-                                class="oe_highlight" invisible="state in ('ug_grade', 'done')"/>
-                        <button name="action_record_weight" string="Record Weight" type="object"
-                                class="oe_highlight" invisible="state in ('draft', 'ug_grade', 'done')"/>
-                        <field name="state" widget="statusbar"
-                               statusbar_visible="draft,quality_evaluated,weight_recorded,done"/>
+                        <!-- ## SUGGESTION: Added statusbar for clear workflow visualization -->
+                        <button name="action_evaluate_quality" string="Evaluate Quality" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                        <button name="action_record_weight" string="Record Weight" type="object" class="btn-primary" invisible="state not in ['quality_evaluated', 'weight_recorded']"/>
+                        <!-- This action will be on the stock.receiving model -->
+                        <!-- <button name="action_receive_stock" string="Receive into Stock" type="object" class="btn-success" invisible="state != 'weight_recorded'"/> -->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,quality_evaluated,weight_recorded,done"/>
                     </header>
                     <sheet>
+                        <!-- ## SUGGESTION: Added smart buttons for quick navigation -->
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" icon="fa-balance-scale" name="action_record_weight" type="object">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Weight</span>
+                                </div>
+                            </button>
+                            <button class="oe_stat_button" icon="fa-check-square-o" name="action_evaluate_quality" type="object">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Quality</span>
+                                </div>
+                            </button>
+                        </div>
+
+
                         <div class="oe_title">
                             <h1>
                                 <field name="coffee_issue_no" readonly="1"/>
@@ -140,6 +154,17 @@
                                 context="{'group_by': 'state'}"/>
                     </group>
                 </search>
+            </field>
+        </record>
+        <record id="view_coffee_arrival_pivot" model="ir.ui.view">
+            <field name="name">coffee.arrival.pivot</field>
+            <field name="model">coffee.arrival</field>
+            <field name="arch" type="xml">
+                <pivot string="Coffee Arrival Analysis">
+                    <field name="supplier_id" type="row"/>
+                    <field name="date" interval="month" type="col"/>
+                    <field name="product_id" type="col"/>
+                </pivot>
             </field>
         </record>
 

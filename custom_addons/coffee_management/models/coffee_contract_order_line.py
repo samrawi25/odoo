@@ -15,7 +15,7 @@ class CoffeeContractOrderLine(models.Model):
         string='Quantity (KG)', required=True
     )
     uom_id = fields.Many2one(
-        'uom.uom', string='Unit of Measure', required=True, default=lambda self: self.env.ref('uom.uom_kgm')
+        'uom.uom', string='Unit of Measure', required=True, default=lambda self: self.env.ref('uom.product_uom_kgm')
     )
     contract_line_id = fields.Many2one(
         'coffee.contract.line', string='Source Contract Line', ondelete='set null'

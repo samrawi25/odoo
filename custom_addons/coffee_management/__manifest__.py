@@ -17,12 +17,12 @@ Automates arrivals, grading, weight management, contracts, manufacturing, and de
         "contacts",
         "account",
         "mail",
+        'uom',
     ],
     "data": [
-        # "security/ir.model.access.csv",
-        "security/coffee_security.xml",
-        "security/coffee_access_rules.xml",
-        "security/coffee_record_rules.xml",
+        "security/security.xml",
+        "security/ir.model.access.csv",
+
         "data/coffee_data.xml",
         "views/product_template_views.xml",
         # "views/product_views.xml",
